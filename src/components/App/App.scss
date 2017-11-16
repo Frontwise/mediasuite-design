@@ -1,0 +1,27 @@
+.App{
+  .cases{
+    font-size: 11px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background-color: $clGrey;
+
+    li{
+      display: inline-block;
+      padding: 10px;
+      border-right: 1px solid $clGreyTint;
+      box-sizing: border-box;
+      cursor: pointer;
+      transition: background-color $transition;
+
+      &:hover{
+        background-color: $clGreyTint;
+      }
+
+      &.active{
+        background-color: $clGreyTint;
+        border-bottom: 2px solid $clSecondary;
+      }
+    }
+  }
+}

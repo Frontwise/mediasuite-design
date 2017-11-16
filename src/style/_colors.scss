@@ -1,0 +1,9 @@
+$colors: "primary" $clPrimary, "primary-alt" $clPrimaryAlt, "secondary" $clSecondary, "dark" $clDark, "dark-grey" $clDarkGrey, "grey" $clGrey, "grey-tint" $clGreyTint, "white" $clWhite;
+
+
+@each $color in $colors {
+  .background-color-#{nth($color, 1)}{
+      background-color: nth($color, 2);
+  }
+}
+

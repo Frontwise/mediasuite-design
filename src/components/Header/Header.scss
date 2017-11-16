@@ -1,0 +1,332 @@
+/* Dimensions */
+$headerHeight: 115px;
+$logoWidth: 295px;
+$accountWidth: 220px;
+
+.header{
+  height: $headerHeight;
+  background-color:  $clDark;
+  color: $clWhite;
+  font-family: $fontHeading;
+  user-select: none;
+
+  @media screen and (max-width: $break-small) {
+      height: auto;
+      min-height: $headerHeight;
+  }
+
+  &.transparent{
+    background-color: rgba($clDark, 0.8);
+  }
+
+  .logo{
+    display: inline-block;
+    background-image: $logoUrl;
+    background-size: 207px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: $logoWidth;    
+    height: $headerHeight;     
+    cursor: pointer; 
+    transition: opacity $transition;
+
+    @media screen and (max-width: $break-medium) {
+      width: $logoWidth * 0.9;
+    }
+
+    &:hover{
+      opacity: 0.75;
+    }
+  }
+
+  .menu{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    vertical-align: top;    
+    cursor: pointer;
+    
+    & > li{
+      display: inline-block;
+      line-height: $headerHeight;
+      margin: 0;
+      padding: 0 25px;     
+      height: $headerHeight;      
+      box-sizing: border-box;
+      transition: background-color $transition;
+
+      @media screen and (max-width: $break-medium) {
+        padding: 0 20px;
+      }
+
+      &.active{
+        border-bottom: 6px solid $clPrimary;
+        background-color: lighten($clDark, 5);
+       }
+
+      &:hover{
+        background-color: lighten($clDark, 2);
+      }
+    }
+  }
+
+  .main{
+    font-size: 1.55em;
+  }
+
+  .sub{
+    margin-right: 10px;
+    font-size: 1.25em;    
+    color: lighten($clDark, 40);
+
+    @media screen and (max-width: $break-medium) {
+      margin-right: 0;
+      font-size: 1.1em;
+      padding-top: 13px;
+    }
+    & > li{
+      padding: 0 15px;
+
+      @media screen and (max-width: $break-medium) {
+        padding: 5px 10px;
+        line-height: 1.25em;
+        display: block;
+        height: 30px;
+        text-align: right;   
+        border-right: 5px solid transparent;   
+
+        &.active{
+            border: none;
+            border-right: 5px solid $clPrimary;
+          }
+      }
+
+      &:hover{
+        color: lighten($clDark, 40);        
+      }
+
+      &.active{
+        color: lighten($clDark, 60);
+      }
+    }
+  }
+
+  .right{    
+    display: inline-block;
+    float: right;
+
+    @media screen and (max-width: $break-small) {
+      display: block;
+      float:none;
+    }
+  }
+
+  .workspace{
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+    height: $headerHeight;
+    padding: 45px 50px 0 15px;
+    font-size: 1.55em;
+    box-sizing: border-box;
+
+    background-image: $arrowDownUrl;    
+    background-repeat: no-repeat;
+
+    // active border will cause 'center' background image to move, so absolute pixels
+    background-position: top 56px right 20px;
+
+    &.active{
+      border-bottom: 6px solid $clSecondary;
+      background-color: lighten($clDark, 2);
+    }
+
+    &:hover{
+       background-color: lighten($clDark, 5);
+    }
+    
+    .icon-workspace{
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      background-image: $iconWorkspaceUrl;
+      background-repeat: no-repeat;
+      background-position: center;
+      vertical-align: middle;
+      margin-right: 10px;
+      margin-top: -2px;
+
+      @media screen and (max-width: $break-medium) {
+        display: none;    
+      }
+    }
+
+    &:hover{
+      .dropdown{
+        display: block;
+      }
+    }
+
+    .dropdown .projects{
+      margin: 0;
+      padding:0;        
+      background-color: $clWhite;  
+      background-image: none;
+
+      input{
+        width: 100%;
+        box-sizing: border-box;
+        border: 0;
+        border-bottom: 1px solid $clGreyTint;
+        padding: 8px 10px;
+        font-family: $fontBody;
+        background-image: $iconSearchUrl;
+        background-position: center right 10px;
+        background-repeat: no-repeat;
+      }
+
+      ul{
+        list-style: none;
+        margin: 0;
+        padding:0; 
+        font-family: $fontBody;
+        font-size: 0.84em;      
+        li{
+          padding: 8px 10px;
+          border-bottom: 1px solid $clGreyTint;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;         
+          &:hover{
+            background-color: $clGreyTint;
+          }
+        } 
+      }      
+    }
+  }
+
+  .account{
+    display: inline-block;
+    position: relative;
+    height: $headerHeight;
+    padding: 45px 40px 0 15px;
+    width: $accountWidth;
+    font-size: 1.55em;
+    box-sizing: border-box;
+    background-image: $arrowRightUrl;    
+    background-repeat: no-repeat;
+
+    // active border will cause 'center' background image to move, so absolute pixels
+    background-position: top 52px right 20px;
+
+    @media screen and (max-width: $break-medium) {
+      width: $accountWidth * 0.75;
+      padding: 45px 30px 0 15px;
+    }
+    
+    &.login{
+      cursor: pointer;  
+    }
+
+    &.active{
+      border-bottom: 6px solid $clSecondary;
+      background-color: lighten($clDark, 2);
+    }
+
+    &:hover{
+      background-color: lighten($clDark, 5);
+    }
+    
+    .icon-person{      
+      display: inline-block;
+      float:left;
+      width: 30px;
+      height: 28px;
+      background-image: $iconPersonUrl;
+      background-repeat: no-repeat;
+      background-position: center;
+      vertical-align: top;
+      margin-right: 10px;
+      margin-top: -2px;     
+    }
+
+    &.loggedin{
+      padding-top: 35px;
+
+      .username{
+        display:block;
+        margin-top: 5px;
+        font-size: 0.7em;
+        margin-left: 40px;       
+        font-family: $fontBody;
+
+        @media screen and (max-width: $break-medium) {
+          margin-left: 0px;
+        }
+      }  
+
+      .icon-person{
+        height: 50px;
+        
+         @media screen and (max-width: $break-medium) {
+          display: none;    
+         }
+      }
+    }
+    
+    &:hover{
+      .dropdown{
+        display: block;
+      }
+    }
+
+  }
+
+  
+  .dropdown{
+    display: none;
+    position: absolute;
+    top: $headerHeight;
+    left: 0;
+    font-size: 0.80em;
+    box-sizing: border-box;
+    width: $accountWidth;
+    color: $clDark;
+    background-color: $clGreyTint;
+    box-shadow: 0 2px 2px rgba(0,0,0,0.15);
+    list-style: none;
+    margin: 0;
+    padding: 0px;    
+
+    & > li{
+      background-image: $arrowRightDarkUrl;    
+      background-repeat: no-repeat;
+      background-position: center right 10px;
+      border-bottom: 1px solid darken($clGreyTint, 10);
+      cursor: pointer;
+      padding: 10px 15px;
+
+      &:hover{
+        background-color: darken($clGreyTint, 2)
+      }
+
+      &.active{
+        background-color: darken($clGreyTint, 5)
+      }
+
+      .count{
+        display: inline-block;
+        float:right;
+        margin-right: 15px;
+        background-color: $clSecondary;
+        color: $clWhite;
+        border-radius: 25px;
+        font-size: 0.8em;
+        font-weight: bold;
+        padding: 2px 4px 2px 4px;
+
+      }
+    }
+  }
+}

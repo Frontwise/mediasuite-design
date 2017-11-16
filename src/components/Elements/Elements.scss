@@ -1,0 +1,28 @@
+$paletteSize: 80px;
+
+.Elements{
+  list-style: none;
+  padding: 0;
+  margin: 20px;
+  margin-left: 40px;
+
+  li{
+    margin-bottom: 20px;
+    max-width: 800px;
+  }
+
+  .palette{
+    list-style: none;
+    padding: 0;
+    
+    li{
+      display: inline-block;
+      margin: 10px;
+      margin-left: 0;
+      width: $paletteSize;
+      height: $paletteSize;
+      border: 1px solid $clGreyTint;
+    }
+  }
+
+}

@@ -1,0 +1,43 @@
+/* Media Suite colors */
+
+$clOrange: #F26C50; 
+$clBlue: #468DCB;
+$clLightBlue: #9FBDD7;
+$clDark: #2D343A;
+$clDarkGrey: #9E9290;
+$clGreyTint: #EEE3E1;
+$clGrey: #FAF6F6;
+$clWhite: #FFFFFF;
+
+$clError: #F25050;
+$clWarning: #F29650;
+$clConfirm: #50F27A;
+
+
+
+$clPrimary: $clBlue;
+$clPrimaryAlt: $clLightBlue;
+$clSecondary: $clOrange;
+
+
+
+/* Font */
+
+$fontHeading: "Maven Pro", sans-serif;
+$fontBody: "Open Sans", sans-serif;
+
+/* Animation */
+
+$transition: 0.2s ease-out;
+
+
+/* Media Queries */
+
+$break-medium: 1290px;
+$break-small: 960px;
+
+/* Page */
+
+$maxPageWidth: 1200px;
+$maxTextBodyWidth: 800px;
+$contentPadding: 40px;

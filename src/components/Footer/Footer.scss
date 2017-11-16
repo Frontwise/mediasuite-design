@@ -1,0 +1,48 @@
+$logoWidth: 295px;
+
+.Footer{
+  background-color: $clGrey;
+  margin-top: 20px;
+
+  ul{
+    list-style: none;
+    padding: 0;
+    margin-right: 10px;
+    min-width: 20%;
+  }
+
+
+  ul:first-child{
+    border-right: 2px solid $clGreyTint;
+    padding-right: 40px;
+  }
+
+  a{
+    font-family: $fontHeading;
+    color: $clDark;
+    text-decoration: none;
+    font-size: 15px;
+    line-height: 2.5em;
+  }
+
+  .content{
+    display: flex;
+    justify-content: space-between;
+    padding: $contentPadding;
+    padding-top: 30px;
+
+    .logo{
+      background-image: $logoDarkUrl;
+      background-size: 207px;
+      background-repeat: no-repeat;
+      background-position: center center;
+      width: 207px;    
+      height: 37px;
+      margin-top: -5px;
+    }
+
+    h5{
+      color: $clDarkGrey;
+    }
+  }
+}
