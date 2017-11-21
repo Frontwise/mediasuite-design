@@ -9,7 +9,7 @@ class LoggedIn extends Component {
   render(){
     return (
       <Header 
-        active="Data"
+        active="About"
         workspace={
           {
             projects: {

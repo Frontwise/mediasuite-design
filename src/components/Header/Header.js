@@ -12,22 +12,38 @@ class Header extends Component {
 
     this.state = {
       active: props.active,
-      transparent: props.transparent || props.active === pages.home
+      transparent: props.transparent || props.active === 'home'
     }
+
+    // Listne to hash change
+    window.onhashchange = this.onHashChange.bind(this);
+  }
+
+
+  /**
+  * OnHashChange listener: if a menu item is clicked, make it active in the state.
+  * This component had to be implemented using 'a href' instead of onClick
+  * because for now not the component, but the resulting html is used and served
+  * as a static HTML file.
+  *
+  * This listener is intended to demonstrate the active states of the menu buttons
+  */
+  onHashChange(){
+    let page = window.location.hash.slice(1);
+    this.navigate(page);
+    console.log(page);
   }
 
   /**
   * Navigate to a page, make it active and call the navigate callback
   */
-  navigate(page, e){
+  navigate(page){
     this.setState({
         active:page,
-        transparent: this.props.transparent || page === pages.home
+        transparent: this.props.transparent || page === 'home'
       });
 
     this.props.navigate(page);
-
-    e.stopPropagation();
   }
 
   /**
@@ -39,17 +55,19 @@ class Header extends Component {
     }
 
     // menu item for user projects (with counter)
-    let userProjects = this.getMenuItem(pages.userProjects, (<span className="count">{this.props.workspace.projects.count}</span>));
+    let userProjects = this.getMenuItem('userProjects', (<span className="count">{this.props.workspace.projects.count}</span>), );
 
     return (
-      <div className={classNames("workspace",{active: [pages.workspace, pages.userProjects].includes(this.state.active)})}>
+      <div className={classNames("workspace",{ active: ['workspace', 'userProjects'].includes(this.state.active) || this.state.active.startsWith('project-') } )  }>
         <i className="icon-workspace"/>Workspace
         
         <ul className="dropdown">
           {userProjects}
+
           <li className="projects">
             <ProjectList {...this.props.workspace.projects} navigate={this.navigate.bind(this)}/>
           </li>
+
         </ul>
       </div>
     );
@@ -64,15 +82,17 @@ class Header extends Component {
 
       // Account button
       return (
-        <div className={["account loggedin", [pages.login, pages.myprofile, pages.signout].indexOf(this.state.active) > -1 ? 'active' : ''].join(" ")}
-           onClick={this.navigate.bind(this,pages.myprofile)}
-           >
-           <i className="icon-person"/>Account <span className="username">{user.name}</span>
+        <div className="account">
+          <a className={classNames("account loggedin", {active: ['login', 'myprofile', 'signout'].includes(this.state.active)})} 
+           href={"#myprofile"}>
+           <i className="icon-person"/>Account
+           <span className="username">{user.name}</span>
+          </a>
 
-           <ul className="dropdown">
-              {this.getMenuItem(pages.myprofile)}
-              {this.getMenuItem(pages.signout)}
-            </ul>
+          <ul className="dropdown">
+            {this.getMenuItem('myprofile')}
+            {this.getMenuItem('signout')}
+          </ul>
 
         </div>
       );
@@ -80,23 +100,23 @@ class Header extends Component {
 
     // login button
     return (
-      <div className={["account login",this.state.active === pages.login ? 'active' : ''].join(" ")}
-           onClick={this.navigate.bind(this,pages.login)}>
-           <i className="icon-person"/>Login
-       </div>
+      <div className="account">
+        <a className={classNames("account login",{active: this.state.active === 'login'})} 
+           href="#login">
+           <i className="icon-person"/>{pages.login}
+        </a>
+      </div>
      );
   }
 
   /**
   * Get a menu <li> item for the given title with active-state indication and navigation callback
   */
-  getMenuItem(title, children){
+  getMenuItem(page, children){
+    let title = pages[page] || page;
     return(
-      <li
-        className={this.state.active === title ? 'active': ''}
-        onClick={this.navigate.bind(this,title)}
-        >
-        {title}{children}
+      <li>
+        <a className={classNames({active : this.state.active === page})}  href={"#"+page}>{title}{children}</a>
       </li>
     );
   }
@@ -107,14 +127,13 @@ class Header extends Component {
   render() {
     return (
       <div className={classNames('header', {transparent: this.state.transparent } ) } >
-        <div
-          className="logo"
-          onClick={this.navigate.bind(this,pages.home)}
-          />
+        <a href="#home">
+          <div className="logo" />
+        </a>
 
         <ul className="menu main">
-          {this.getMenuItem(pages.data)}
-          {this.getMenuItem(pages.tools)}
+          {this.getMenuItem('data')}
+          {this.getMenuItem('tools')}
         </ul>
 
         {this.getWorkSpace(this.props.workspace)}
@@ -123,9 +142,9 @@ class Header extends Component {
         <div className="right">
 
           <ul className="menu sub">
-            {this.getMenuItem(pages.about)}
-            {this.getMenuItem(pages.documentation)}
-            {this.getMenuItem(pages.contact)}
+            {this.getMenuItem('about')}
+            {this.getMenuItem('documentation')}
+            {this.getMenuItem('contact')}
           </ul>
 
           {this.getAccount(this.props.user)}

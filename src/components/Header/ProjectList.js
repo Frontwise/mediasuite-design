@@ -26,11 +26,11 @@ class ProjectList extends Component {
     return(
       <div className="projects">
         <input placeholder="Search project" ref={(elem)=>{this.searchInput = elem; }} onChange={()=>{ this.search(this.searchInput.value); }}/>
-        <ul>
-          {this.state.list.slice(0,6).map((p)=>(<li key={p.id} onClick={this.props.navigate.bind(this,'project-' + p.id)}>{p.title}</li>))}
-        </ul>
+        <div className="list">
+          {this.state.list.slice(0,6).map((p)=>(<a key={p.id} href={'#project-' + p.id}>{p.title}</a>))}
+        </div>
       </div>
-      )
+    )
   }
 }
 

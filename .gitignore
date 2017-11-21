@@ -22,3 +22,6 @@ yarn-error.log*
 
 
 .sass-cache/
+
+# compiled
+src/index.css
