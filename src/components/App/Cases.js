@@ -3,6 +3,7 @@ import Header from '../Header/Header';
 import Page from '../Page/Page';
 import Elements from '../Elements/Elements';
 import Homepage from '../Homepage/Homepage';
+import Data from '../Data/Data';
 import {text} from '../../data/Text';
 
 /** 
@@ -35,5 +36,6 @@ export default [
       </div>
     </Page>
   )),
-   newCase('Homepage', (<Homepage /> )),
+  newCase('Homepage', (<Homepage /> )),
+  newCase('Data', (<Data />)),
 ]
