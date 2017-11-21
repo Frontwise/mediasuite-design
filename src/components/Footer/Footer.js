@@ -14,18 +14,18 @@ class Footer extends Component {
           </ul>
 
           <ul>
-            <li><a href="">Tools</a></li>
-            <li><a href="">Data</a></li>
+            <li><a href="#tools">Tools</a></li>
+            <li><a href="#data">Data</a></li>
           </ul>
 
           <ul>
-            <li><a href="">About</a></li>
-            <li><a href="">Documentation</a></li>
-            <li><a href="">Contact</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#documentation">Documentation</a></li>
+            <li><a href="#contact">Contact</a></li>
           </ul>
 
           <ul>
-            <li><a href="">Login</a></li>
+            <li><a href="#login">Login</a></li>
           </ul>
         </div>
       </div>
