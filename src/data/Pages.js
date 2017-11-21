@@ -2,15 +2,30 @@
 * Constant pagenames/titles for all pages
 */
 export const pages = {
-  home: 'Home',
-  data: 'Data',
-  tools: 'Tools',
-  workspace: 'Workspace',
-  userProjects: 'User Projects',
-  about: 'About',
-  documentation: 'Documentation',
-  contact: 'Contact',
-  login: 'Login',
-  myprofile: 'My profile',
-  signout: 'Sign out'
+  home: {title: 'Home'},
+  
+  data: {title: 'Data'},
+  
+  tools: {title: 'Tools'},
+  
+  workspace: {title: 'Workspace'},
+    userProjects: {title: 'User Projects', parent: 'workspace'},
+      'project-1': {title: 'Watersnoodramp', parent: 'userProjects'},
+      'project-2': {title: 'Pim Fortuyn', parent: 'userProjects'},
+      'project-3': {title: 'Immigratie', parent: 'userProjects'},
+      'project-4': {title: 'Paars kabinet', parent: 'userProjects'},
+      'project-5': {title: 'Nationale rampen', parent: 'userProjects'},
+      // etc
+  
+  about: {title: 'About'},
+  
+  documentation: {title: 'Documentation'},
+  
+  contact: {title: 'Contact'},
+
+  login: {title: 'Login'},
+
+  account: {title: 'Account'},
+    myprofile: {title: 'My profile', parent: 'account'},
+    signout: {title: 'Sign out', parent: 'account'}
 }

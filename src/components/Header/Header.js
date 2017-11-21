@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { pages } from '../../data/Pages';
 import HeaderExamples from './HeaderExamples';
+import { BreadCrumbs } from '../';
 
 class Header extends Component {
 
@@ -85,7 +86,7 @@ class Header extends Component {
         <div className="account">
           <a className={classNames("account loggedin", {active: ['login', 'myprofile', 'signout'].includes(this.state.active)})} 
            href={"#myprofile"}>
-           <i className="icon-person"/>Account
+           <i className="icon-person"/>{pages.account.title}
            <span className="username">{user.name}</span>
           </a>
 
@@ -103,7 +104,7 @@ class Header extends Component {
       <div className="account">
         <a className={classNames("account login",{active: this.state.active === 'login'})} 
            href="#login">
-           <i className="icon-person"/>{pages.login}
+           <i className="icon-person"/>{pages.login.title}
         </a>
       </div>
      );
@@ -113,7 +114,8 @@ class Header extends Component {
   * Get a menu <li> item for the given title with active-state indication and navigation callback
   */
   getMenuItem(page, children){
-    let title = pages[page] || page;
+
+    let title = pages[page].title || page;
     return(
       <li>
         <a className={classNames({active : this.state.active === page})}  href={"#"+page}>{title}{children}</a>
@@ -150,6 +152,15 @@ class Header extends Component {
           {this.getAccount(this.props.user)}
         </div>
 
+        <BreadCrumbs activePage={this.state.active}/>
+
+
+        {this.props.help ? <a href="#help" className="help" ></a> : null}
+        {this.props.help ? 
+          <div className="help-body">
+            Help for id: {this.props.help}
+          </div>
+          : null}
       </div>
     );
   }
@@ -179,6 +190,15 @@ Header.propTypes = {
 
   // navigation callback
   navigate: PropTypes.func.isRequired,
+
+  // help id
+  help: PropTypes.string,
+
+  // breadcrumb path, excluding home
+  breadCrumb: PropTypes.arrayOf(PropTypes.shape({
+     url: PropTypes.string.isRequired,
+     title: PropTypes.string.isRequired,
+   })),
 }
 
 Header.Examples = HeaderExamples;

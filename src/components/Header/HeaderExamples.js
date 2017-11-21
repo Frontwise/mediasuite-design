@@ -9,7 +9,7 @@ class LoggedIn extends Component {
   render(){
     return (
       <Header 
-        active="About"
+        active="about"
         workspace={
           {
             projects: {
@@ -46,9 +46,10 @@ class NotLoggedIn extends Component {
   render(){
     return (
       <Header 
-        active="Tools"
+        active="tools"
         workspace={null} 
         user={null}
+        help="example-help"
         navigate={(page)=>{
           // link to router here
           window.location.hash="#" + page    }

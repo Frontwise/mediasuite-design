@@ -20,7 +20,7 @@ class Homepage extends Component {
       <div>        
         <div className="banner" style={{backgroundImage:'url('+banner1+')'}}>         
           
-          <Header.Examples.NotLoggedIn active="Home" />
+          <Header.Examples.NotLoggedIn active="home" help="" />
 
           <div className="content">
             <div className="intro">

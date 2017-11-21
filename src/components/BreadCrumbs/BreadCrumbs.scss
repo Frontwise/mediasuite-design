@@ -1,0 +1,24 @@
+.BreadCrumbs{
+  display: block;
+  list-style:none;
+  font-weight: normal;
+  font-family: $fontBody;
+  li{
+    display: inline-block;
+    color: $clGreyTint;
+
+    a{
+      color: $clPrimary;
+      padding: 0 5px;
+      &.home{
+        background-image: $iconHomeUrl;
+        background-repeat: no-repeat;
+        background-position: center center;
+        display: inline-block;
+        vertical-align: top;
+        width: 17px;
+        height: 15px;
+      }
+    }
+  }
+}

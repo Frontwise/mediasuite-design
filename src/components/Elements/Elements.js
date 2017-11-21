@@ -36,8 +36,8 @@ class Elements extends Component {
         <li>
           <a href="" className="btn primary" onClick={(e)=>{e.preventDefault();}}>Primary</a>
           <a href="" className="btn primary plus" onClick={(e)=>{e.preventDefault();}}>Primary Plus</a>
-        <li>
         </li>
+        <li>
           <a href="" className="btn blank" onClick={(e)=>{e.preventDefault();}}>Blank</a>
           <a href="" className="btn blank warning" onClick={(e)=>{e.preventDefault();}}>Blank Warning</a>
         </li>
