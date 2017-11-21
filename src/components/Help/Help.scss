@@ -1,0 +1,18 @@
+.Help{
+  float:right;
+  display: inline-block;
+  & > a{
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background-color: $clPrimary;
+    background-image: $iconHelpUrl;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;    
+    float: right;
+    &:hover{
+      background-color: lighten($clPrimary, 10);
+    }
+  }
+}

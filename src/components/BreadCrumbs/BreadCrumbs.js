@@ -7,8 +7,6 @@ class BreadCrumbs extends Component {
 
   getPath(page){
     let path = [];
-    console.log(page);
-    console.log(pages[page]);
     let index = path.push(Object.assign({}, pages[page], {url: '#' + page} ));    
     while(path[index - 1].parent ){
       index = path.push(Object.assign({}, pages[path[index - 1].parent], {url: '#' + path[index - 1].parent} ));      
@@ -28,7 +26,7 @@ class BreadCrumbs extends Component {
     return (
       <ul className="BreadCrumbs">      
         <li><a href="#home" className="home"></a>/</li>
-        {path.map((path,index) => ((<li key={path}><a href={path.url}>{path.title}</a>{index < pathLen - 1  ? '/' : ''}</li>)))}
+        {path.map((path,index) => ((<li key={index}><a href={path.url}>{path.title}</a>{index < pathLen - 1  ? '/' : ''}</li>)))}
       </ul>
     );
   }

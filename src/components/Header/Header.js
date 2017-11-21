@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { pages } from '../../data/Pages';
 import HeaderExamples from './HeaderExamples';
-import { BreadCrumbs } from '../';
+import { BreadCrumbs, Help } from '../';
 
 class Header extends Component {
 
@@ -32,7 +32,6 @@ class Header extends Component {
   onHashChange(){
     let page = window.location.hash.slice(1);
     this.navigate(page);
-    console.log(page);
   }
 
   /**
@@ -128,39 +127,36 @@ class Header extends Component {
   */
   render() {
     return (
-      <div className={classNames('header', {transparent: this.state.transparent } ) } >
-        <a href="#home">
-          <div className="logo" />
-        </a>
+      <div className="header">
+        <div className={classNames('top-bar', {transparent: this.state.transparent } ) } >
+          <a href="#home">
+            <div className="logo" />
+          </a>
 
-        <ul className="menu main">
-          {this.getMenuItem('data')}
-          {this.getMenuItem('tools')}
-        </ul>
-
-        {this.getWorkSpace(this.props.workspace)}
-
-        {/* right side of the header */}
-        <div className="right">
-
-          <ul className="menu sub">
-            {this.getMenuItem('about')}
-            {this.getMenuItem('documentation')}
-            {this.getMenuItem('contact')}
+          <ul className="menu main">
+            {this.getMenuItem('data')}
+            {this.getMenuItem('tools')}
           </ul>
 
-          {this.getAccount(this.props.user)}
+          {this.getWorkSpace(this.props.workspace)}
+
+          {/* right side of the header */}
+          <div className="right">
+
+            <ul className="menu sub">
+              {this.getMenuItem('about')}
+              {this.getMenuItem('documentation')}
+              {this.getMenuItem('contact')}
+            </ul>
+
+            {this.getAccount(this.props.user)}
+          </div>
         </div>
 
         <BreadCrumbs activePage={this.state.active}/>
 
+        <Help id={this.props.help || 'dev'} />
 
-        {this.props.help ? <a href="#help" className="help" ></a> : null}
-        {this.props.help ? 
-          <div className="help-body">
-            Help for id: {this.props.help}
-          </div>
-          : null}
       </div>
     );
   }

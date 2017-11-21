@@ -3,6 +3,7 @@ import BreadCrumbs from './BreadCrumbs/BreadCrumbs';
 import Elements from './Elements/Elements';
 import Footer from './Footer/Footer';
 import Header from './Header/Header';
+import Help from './Help/Help';
 import Homepage from './Homepage/Homepage';
 import Page from './Page/Page';
 
@@ -12,6 +13,7 @@ export{
   Elements,  
   Footer,
   Header,
+  Help,
   Homepage,
   Page,
 }

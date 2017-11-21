@@ -1,10 +1,13 @@
 .BreadCrumbs{
-  display: block;
+  display: inline-block;
+  box-sizing: border-box;
   list-style:none;
   font-weight: normal;
   font-family: $fontBody;
   font-size: 13px;
   line-height: 15px;
+  width: calc(100% - 60px);
+
   li{
     display: inline-block;
     color: $clGreyTint;
@@ -12,6 +15,7 @@
     a{
       color: $clPrimary;
       padding: 0 5px;
+
       &.home{
         background-image: $iconHomeUrl;
         background-repeat: no-repeat;
