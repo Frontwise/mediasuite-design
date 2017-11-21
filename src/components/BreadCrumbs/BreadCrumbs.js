@@ -22,12 +22,13 @@ class BreadCrumbs extends Component {
       return null;
     }
 
-
+    let path = this.getPath(this.props.activePage);
+    let pathLen = path.length;
 
     return (
       <ul className="BreadCrumbs">      
         <li><a href="#home" className="home"></a>/</li>
-        {this.getPath(this.props.activePage).map((path) => ((<li key={path}><a href={path.url}>{path.title}</a>/</li>)))}
+        {path.map((path,index) => ((<li key={path}><a href={path.url}>{path.title}</a>{index < pathLen - 1  ? '/' : ''}</li>)))}
       </ul>
     );
   }
