@@ -58,7 +58,7 @@ class Header extends Component {
     let userProjects = this.getMenuItem('userProjects', (<span className="count">{this.props.workspace.projects.count}</span>), );
 
     return (
-      <div className={classNames("workspace",{ active: ['workspace', 'userProjects'].includes(this.state.active) || this.state.active.startsWith('project-') } )  }>
+      <div className={classNames("workspace",{ active: ['workspace', 'userProjects', 'newProject'].includes(this.state.active) || this.state.active.startsWith('project-') } )  }>
         <i className="icon-workspace"/>Workspace
         
         <ul className="dropdown">
