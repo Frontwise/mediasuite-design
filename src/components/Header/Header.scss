@@ -18,6 +18,9 @@ $accountWidth: 220px;
 
   &.transparent{
     background-color: rgba($clDark, 0.8);
+    .menu > li a:hover{
+      background-color: rgba($clDark, 0.3);
+    }
   }
 
   a{
