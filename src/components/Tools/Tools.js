@@ -94,7 +94,7 @@ class Tools extends Component {
           </div>
           
           <div className="actions">
-            <a href="#" className="btn primary">More information</a>
+            <a href="" className="btn primary">More information</a>
           </div>
         </div>
       </Page>

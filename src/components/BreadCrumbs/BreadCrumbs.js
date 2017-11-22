@@ -25,7 +25,7 @@ class BreadCrumbs extends Component {
 
     return (
       <ul className="BreadCrumbs">      
-        <li><a href="#home" className="home"></a>/</li>
+        <li><a href="#home" className="home"> </a>/</li>
         {path.map((path,index) => ((<li key={index}><a href={path.url}>{path.title}</a>{index < pathLen - 1  ? '/' : ''}</li>)))}
       </ul>
     );
