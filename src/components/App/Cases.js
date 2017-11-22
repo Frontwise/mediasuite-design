@@ -26,8 +26,9 @@ const newCase = (title, component) => (new Case(title, component));
 
 export default [
   newCase('Elements', (<Elements /> )),
+  newCase('Header', (<Header.Examples.NotLoggedIn /> )),
   newCase('Header (logged in)', (<Header.Examples.LoggedIn /> )),
-  newCase('Header (not logged in)', (<Header.Examples.NotLoggedIn /> )),
+  newCase('Header (no projects)', (<Header.Examples.LoggedInNoProjects /> )),
   newCase('Default Page', (
     <Page>
       <div className="content">

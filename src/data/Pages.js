@@ -10,6 +10,7 @@ export const pages = {
   
   workspace: {title: 'Workspace'},
     userProjects: {title: 'User Projects', parent: 'workspace'},
+      'newProject': {title: 'Create', parent: 'userProjects'},
       'project-1': {title: 'Watersnoodramp', parent: 'userProjects'},
       'project-2': {title: 'Pim Fortuyn', parent: 'userProjects'},
       'project-3': {title: 'Immigratie', parent: 'userProjects'},

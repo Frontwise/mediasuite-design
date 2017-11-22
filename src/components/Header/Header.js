@@ -16,8 +16,9 @@ class Header extends Component {
       transparent: props.transparent || props.active === 'home'
     }
 
-    // Listne to hash change
-    window.onhashchange = this.onHashChange.bind(this);
+    // Listen to hash change
+    this.hashChangeListener = this.onHashChange.bind(this);
+    window.addEventListener('hashchange', this.hashChangeListener);
   }
 
 
@@ -33,6 +34,14 @@ class Header extends Component {
     let page = window.location.hash.slice(1);
     this.navigate(page);
   }
+
+  /**
+  * Unmount component; remove listeners
+  */
+  componentWillUnmount(){
+    window.removeEventListener('hashchange', this.hashChangeListener);
+  }
+
 
   /**
   * Navigate to a page, make it active and call the navigate callback
@@ -58,15 +67,31 @@ class Header extends Component {
     let userProjects = this.getMenuItem('userProjects', (<span className="count">{this.props.workspace.projects.count}</span>), );
 
     return (
-      <div className={classNames("workspace",{ active: ['workspace', 'userProjects'].includes(this.state.active) || this.state.active.startsWith('project-') } )  }>
+      <div className={classNames("workspace",{ active: ['workspace', 'userProjects', 'newProject'].includes(this.state.active) || this.state.active.startsWith('project-') } )  }>
         <i className="icon-workspace"/>Workspace
         
         <ul className="dropdown">
           {userProjects}
 
+          {this.props.workspace.projects.count ? 
+          
           <li className="projects">
             <ProjectList {...this.props.workspace.projects} navigate={this.navigate.bind(this)}/>
           </li>
+
+          :
+          <li className="new-project">
+            <p>You don't have any projects yet.</p>
+
+            <a href="#newProject" className="button-holder">
+              <div className="btn primary plus">
+                Create User Project
+              </div>
+            </a>
+          </li>
+
+          }
+
 
         </ul>
       </div>
@@ -127,7 +152,7 @@ class Header extends Component {
   */
   render() {
     return (
-      <div className="header">
+      <div className="Header">
         <div className={classNames('top-bar', {transparent: this.state.transparent } ) } >
           <a href="#home">
             <div className="logo" />
@@ -155,7 +180,7 @@ class Header extends Component {
 
         <BreadCrumbs activePage={this.state.active}/>
 
-        <Help id={this.props.help || 'dev'} />
+        <Help id={this.props.help} />
 
       </div>
     );

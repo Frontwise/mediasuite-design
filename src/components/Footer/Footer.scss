@@ -3,6 +3,7 @@ $logoWidth: 295px;
 .Footer{
   background-color: $clDark;
   margin-top: 20px;
+  padding-top: 10px;
 
   ul{
     list-style: none;
@@ -15,6 +16,7 @@ $logoWidth: 295px;
   ul:first-child{
     border-right: 2px solid $clGreyTint;
     padding-right: 40px;
+    margin-right: 40px;
   }
 
   a{

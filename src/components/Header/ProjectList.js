@@ -22,7 +22,8 @@ class ProjectList extends Component {
     }
   }
 
-  render(){
+  render(){    
+
     return(
       <div className="projects">
         <input placeholder="Search project" ref={(elem)=>{this.searchInput = elem; }} onChange={()=>{ this.search(this.searchInput.value); }}/>
