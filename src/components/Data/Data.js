@@ -3,13 +3,7 @@ import { Page, Header } from '../';
 import classNames from 'classnames';
 
 /* Images */
-import banner1 from '../../images/mediasuite-banner1.jpg';
 import bigiconData from '../../images/bigicon-data.png';
-import bigiconTools from '../../images/bigicon-tools.png';
-import bigiconWorkspace from '../../images/bigicon-workspace.png';
-import bannerMask1 from '../../images/banner-mask1.jpg';
-import logoClariah from '../../images/logo-clariah.png';
-
 
 class Data extends Component {
   
