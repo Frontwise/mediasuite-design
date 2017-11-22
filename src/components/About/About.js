@@ -45,15 +45,15 @@ class About extends Component {
           <div className="block">
             <div>
               <img src={bigiconData} alt="Media Suite Data"/>
-              <h3>Media Suite Data</h3>
+              <h3>Data</h3>
             </div>
             <div>
               <img src={bigiconTools} alt="Media Suite Tools"/>
-              <h3>Media Suite Tools</h3>
+              <h3>Tools</h3>
             </div>
             <div>
               <img src={bigiconWorkspace} alt="Media Suite Workspace"/>
-              <h3>Media Suite Workspace</h3>
+              <h3>Workspace</h3>
             </div>
           </div>
         </div>
