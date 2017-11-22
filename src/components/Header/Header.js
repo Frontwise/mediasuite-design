@@ -64,10 +64,13 @@ class Header extends Component {
         <ul className="dropdown">
           {userProjects}
 
-          {this.props.workspace.projects && false ? 
+          {this.props.workspace.projects.count ? 
+          
           <li className="projects">
             <ProjectList {...this.props.workspace.projects} navigate={this.navigate.bind(this)}/>
-          </li>:
+          </li>
+
+          :
           <li className="new-project">
             <p>You don't have any projects yet.</p>
 
@@ -77,6 +80,7 @@ class Header extends Component {
               </div>
             </a>
           </li>
+
           }
 
 

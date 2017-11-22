@@ -22,19 +22,7 @@ class ProjectList extends Component {
     }
   }
 
-  render(){
-    // empty list
-    if (true || !this.props.recent){
-      return (
-        <div className="new-project">
-          <p>You don't have any projects yet.</p>
-
-          <div className="button add">
-            Create User Project
-          </div>
-        </div>
-        )
-    }
+  render(){    
 
     return(
       <div className="projects">
