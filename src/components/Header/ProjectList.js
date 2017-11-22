@@ -23,6 +23,19 @@ class ProjectList extends Component {
   }
 
   render(){
+    // empty list
+    if (true || !this.props.recent){
+      return (
+        <div className="new-project">
+          <p>You don't have any projects yet.</p>
+
+          <div className="button add">
+            Create User Project
+          </div>
+        </div>
+        )
+    }
+
     return(
       <div className="projects">
         <input placeholder="Search project" ref={(elem)=>{this.searchInput = elem; }} onChange={()=>{ this.search(this.searchInput.value); }}/>

@@ -64,9 +64,21 @@ class Header extends Component {
         <ul className="dropdown">
           {userProjects}
 
+          {this.props.workspace.projects && false ? 
           <li className="projects">
             <ProjectList {...this.props.workspace.projects} navigate={this.navigate.bind(this)}/>
+          </li>:
+          <li className="new-project">
+            <p>You don't have any projects yet.</p>
+
+            <a href="#newProject" className="button-holder">
+              <div className="btn primary plus">
+                Create User Project
+              </div>
+            </a>
           </li>
+          }
+
 
         </ul>
       </div>

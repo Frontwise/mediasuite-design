@@ -38,6 +38,42 @@ class LoggedIn extends Component {
     );
   }
 }
+/**
+* Example of Header in logged in user state, without projects
+*/
+class LoggedInNoProjects extends Component {
+  render(){
+    return (
+      <Header 
+        active="about"
+        workspace={
+          {
+            projects: {
+              recent: [],
+              count: 0,
+              search: (keyword, callback) =>{
+                // we want to match only lowercase
+                keyword = keyword.toLowerCase();
+
+                // the callback enables you to do an async fetch to get the data
+                // now we use just the list of example projects
+                callback(projects.filter((p)=>(p.title.toLowerCase().indexOf(keyword) > -1)));
+              }
+            }
+          }
+        } 
+        user={{
+          name:"Jan Janssen"
+        }}
+        navigate={(page)=>{
+          // link to router here
+          window.location.hash="#" + page    }
+        }
+        {...this.props}
+      />
+    );
+  }
+}
 
 /**
 * Example of Header in not logged in state
@@ -62,5 +98,6 @@ class NotLoggedIn extends Component {
 
 export default {
   LoggedIn, 
-  NotLoggedIn
+  NotLoggedIn,
+  LoggedInNoProjects
 }

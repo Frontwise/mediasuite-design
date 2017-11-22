@@ -2,6 +2,7 @@
 $headerHeight: 115px;
 $logoWidth: 295px;
 $accountWidth: 220px;
+$dropdownWidth: $accountWidth;
 
 .Header{
   position: relative;
@@ -196,45 +197,70 @@ $accountWidth: 220px;
         }
       }
 
-      .dropdown .projects{
-        background-color: $clWhite;  
-        background-image: none;
+      // Project list 
+      .dropdown{
+        width: $dropdownWidth * 1.2;
 
-        input{
-          width: 100%;
-          box-sizing: border-box;
-          border: 0;
-          border-bottom: 1px solid $clGreyTint;
-          padding: 8px 10px;
-          font-family: $fontBody;
-          background-image: $iconSearchUrl;
-          background-position: center right 10px;
-          background-repeat: no-repeat;
+        .projects{
+          background-color: $clWhite;  
+          background-image: none;
+
+          input{
+            width: 100%;
+            box-sizing: border-box;
+            border: 0;
+            border-bottom: 1px solid $clGreyTint;
+            padding: 8px 10px;
+            font-family: $fontBody;
+            background-image: $iconSearchUrl;
+            background-position: center right 10px;
+            background-repeat: no-repeat;
+          }
+
+          .list{
+            margin: 0;
+            padding:0; 
+            font-family: $fontBody;
+            font-size: 0.84em; 
+
+            a{
+              display: block;
+              color:$clDark;
+              font-size: 13px;
+              padding: 8px 10px;
+              padding-right: 20px;
+              border-bottom: 1px solid $clGreyTint;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;         
+              &:hover{
+                background-color: $clGreyTint;
+              }
+            } 
+          }      
         }
 
-        .list{
-          margin: 0;
-          padding:0; 
-          font-family: $fontBody;
-          font-size: 0.84em;      
-          a{
-            display: block;
-            color:$clDark;
+        .new-project{
+          padding: 0;
+          p{
+            color: $clDark;
+            padding: 10px 15px;
             font-size: 13px;
-            padding: 8px 10px;
-            padding-right: 20px;
-            border-bottom: 1px solid $clGreyTint;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;         
-            &:hover{
-              background-color: $clGreyTint;
+            font-family: $fontBody;
+            margin: 0;
+          }
+
+          .button-holder{
+            background: none;
+            padding-top: 0;
+            .btn{
+              margin: 0;              
+              color: $clWhite;
             }
-          } 
-        }      
+          }
+        }
       }
     }
-
 
     // Account
 
@@ -326,7 +352,7 @@ $accountWidth: 220px;
       top: $headerHeight;
       left: 0;
       box-sizing: border-box;
-      width: $accountWidth;
+      width: $dropdownWidth;
       background-color: $clGreyTint;
       box-shadow: 0 2px 2px rgba(0,0,0,0.15);
       margin: 0;
