@@ -16,8 +16,9 @@ class Header extends Component {
       transparent: props.transparent || props.active === 'home'
     }
 
-    // Listne to hash change
-    window.onhashchange = this.onHashChange.bind(this);
+    // Listen to hash change
+    this.hashChangeListener = this.onHashChange.bind(this);
+    window.addEventListener('hashchange', this.hashChangeListener);
   }
 
 
@@ -33,6 +34,14 @@ class Header extends Component {
     let page = window.location.hash.slice(1);
     this.navigate(page);
   }
+
+  /**
+  * Unmount component; remove listeners
+  */
+  componentWillUnmount(){
+    window.removeEventListener('hashchange', this.hashChangeListener);
+  }
+
 
   /**
   * Navigate to a page, make it active and call the navigate callback

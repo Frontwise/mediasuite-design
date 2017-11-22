@@ -7,13 +7,22 @@ class App extends Component {
 
   constructor(props){
     super(props);
+
+    let caseIndex = Cases.length - 1;
+
+    // retrieve case index from hash
+    if (window.location.hash.startsWith('#case-')){
+      caseIndex = Math.min(caseIndex, parseInt(window.location.hash.slice(6), 10));
+    }
+
     this.state = {
-      caseIndex: Cases.length - 1
+      caseIndex: caseIndex
     }
   }
 
   setCase(index){
     this.setState({caseIndex: index});
+    window.location.hash = '#case-' + index;
   }
 
   render() {
