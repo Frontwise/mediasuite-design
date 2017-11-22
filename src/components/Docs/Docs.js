@@ -3,12 +3,12 @@ import { Page, Header } from '../';
 import TOC from '../TOC/TOC';
 
 class Docs extends Component {
-  
+
   render() {
-    
+
     return (
-      <Page header={<Header.Examples.NotLoggedIn active="docs" />} className="page Docs">
-      
+      <Page header={<Header.Examples.NotLoggedIn active="documentation" />} className="page Docs">
+
         <TOC children={[
           {
             title: <span>Introduction</span>,
@@ -55,7 +55,7 @@ class Docs extends Component {
             </div>,
           },
         ]} />
-        
+
       </Page>
     );
   }

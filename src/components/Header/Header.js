@@ -32,7 +32,9 @@ class Header extends Component {
   */
   onHashChange(){
     let page = window.location.hash.slice(1);
-    this.navigate(page);
+    if (!page.startsWith('case-')){
+      this.navigate(page);
+    }
   }
 
   /**
@@ -69,12 +71,12 @@ class Header extends Component {
     return (
       <div className={classNames("workspace",{ active: ['workspace', 'userProjects', 'newProject'].includes(this.state.active) || this.state.active.startsWith('project-') } )  }>
         <i className="icon-workspace"/>Workspace
-        
+
         <ul className="dropdown">
           {userProjects}
 
-          {this.props.workspace.projects.count ? 
-          
+          {this.props.workspace.projects.count ?
+
           <li className="projects">
             <ProjectList {...this.props.workspace.projects} navigate={this.navigate.bind(this)}/>
           </li>
@@ -108,7 +110,7 @@ class Header extends Component {
       // Account button
       return (
         <div className="account">
-          <a className={classNames("account loggedin", {active: ['login', 'myprofile', 'signout'].includes(this.state.active)})} 
+          <a className={classNames("account loggedin", {active: ['login', 'myprofile', 'signout'].includes(this.state.active)})}
            href={"#myprofile"}>
            <i className="icon-person"/>{pages.account.title}
            <span className="username">{user.name}</span>
@@ -126,7 +128,7 @@ class Header extends Component {
     // login button
     return (
       <div className="account">
-        <a className={classNames("account login",{active: this.state.active === 'login'})} 
+        <a className={classNames("account login",{active: this.state.active === 'login'})}
            href="#login">
            <i className="icon-person"/>{pages.login.title}
         </a>
