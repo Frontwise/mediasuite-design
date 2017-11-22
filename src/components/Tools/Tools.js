@@ -68,8 +68,8 @@ class Tools extends Component {
         </div>
         
         <div className="list">
-          {tools.map(tool =>
-            <div className="tool">
+          {tools.map((tool,index) =>
+            <div className="tool" key={index}>
               <div className="image-wrap">
                 <img src={placeholder} alt={tool.name} />
               </div>
