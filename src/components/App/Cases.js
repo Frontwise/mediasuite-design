@@ -7,6 +7,7 @@ import Data from '../Data/Data';
 import Tools from '../Tools/Tools';
 import About from '../About/About';
 import Docs from '../Docs/Docs';
+import Contact from '../Contact/Contact';
 import {text} from '../../data/Text';
 
 /** 
@@ -45,4 +46,5 @@ export default [
   newCase('Tools', (<Tools />)),
   newCase('About', (<About />)),
   newCase('Docs', (<Docs />)),
+  newCase('Contact', (<Contact />)),
 ]

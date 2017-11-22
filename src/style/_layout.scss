@@ -60,6 +60,7 @@ p{
   margin: 10px;
   background-color: $clGrey;
   color: $clDark;
+  border-width: 0;
 
   &:hover{
     background-color: lighten($clGrey, 5);

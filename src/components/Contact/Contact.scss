@@ -1,0 +1,38 @@
+.page.Contact {
+  color: #1E1A1D;
+  
+  .TOC {
+    max-width: $maxTextBodyWidth;
+    margin: auto;
+    
+    .child {
+      margin-bottom: 50px;
+    }
+  }
+  
+  form {
+    .btn {
+      margin-left: 0;
+    }
+  }
+  
+  .external-links {
+    a {
+      display: block;
+      padding: 16px;
+      border-bottom: 0.5px solid $clGreyTint;
+      font-size: 13px;
+      color: inherit;
+      text-decoration: none;
+      background: no-repeat $arrowRightUrl right 10px center;
+      
+      &:nth-child(even) {
+        background-color: $clGrey;
+      }
+      
+      &:hover {
+        background-color: $clGreyTint;
+      }
+    }
+  }
+}
