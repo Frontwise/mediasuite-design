@@ -5,14 +5,23 @@ import { pages } from  '../../data/Pages';
 class Help extends Component {
 
   render() {    
+    // don't render when no id is given
+    if (!this.props.id){
+      return null;
+    }
+
     return (
         <div className="Help">
-          {this.props.id ? <a href="#help" className="help" ></a> : null}
-          {/*this.props.id == 'hide' ? 
-          <div className="help-body">
-            Help for id: {this.props.id}
-          </div>
-          : null*/}
+          <div className="button"/>
+          
+          <div className="container">
+            <div className="header">
+              <div className="close"/>
+            </div>
+            <p>
+              Help for id: {this.props.id}
+            </p>
+          </div>          
         </div>
     );
   }

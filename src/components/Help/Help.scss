@@ -1,7 +1,7 @@
 .Help{
   float:right;
   display: inline-block;
-  & > a{
+  .button{
     display: inline-block;
     width: 50px;
     height: 50px;
@@ -13,6 +13,30 @@
     float: right;
     &:hover{
       background-color: lighten($clPrimary, 10);
+    }
+  }
+
+  .container{
+    display: none;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 600px;
+    max-width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 0;
+
+    background-color: $clWhite;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+
+    .header{
+      background-color: $clDark;
+      height: 50px;
+    }
+
+    p{
+      padding: 20px;
     }
   }
 }
