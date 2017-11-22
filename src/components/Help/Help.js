@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { pages } from  '../../data/Pages';
 import { text } from  '../../data/Text';
 import classNames from 'classnames';
 
@@ -10,7 +9,7 @@ class Help extends Component {
     super(props);
 
     this.state = {
-      active: props.show == true
+      active: props.show === true
     }
   }
 
@@ -57,5 +56,19 @@ class Help extends Component {
     );
   }
 }
+
+
+Help.propTypes = {
+  
+  // identifier for the documentation content block that should be loaded here
+  // e.g. 'mediasuite-page-data' > should return a block of text from the docs
+  // that shows the help about that specfic page, based on the given id
+  // this component for now only shows placeholder content.
+  id: PropTypes.string,
+
+  // show the Help on component load/mount directly
+  show: PropTypes.bool,
+}
+
 
 export default Help;
