@@ -127,7 +127,7 @@ class Header extends Component {
   */
   render() {
     return (
-      <div className="header">
+      <div className="Header">
         <div className={classNames('top-bar', {transparent: this.state.transparent } ) } >
           <a href="#home">
             <div className="logo" />
@@ -155,7 +155,7 @@ class Header extends Component {
 
         <BreadCrumbs activePage={this.state.active}/>
 
-        <Help id={this.props.help || 'dev'} />
+        <Help id={this.props.help} />
 
       </div>
     );
