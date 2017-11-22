@@ -1,27 +1,53 @@
 .TOC {
   $tocWidth: 200px;
   
-  display: flex;
-  
   .toc {
     margin-right: 50px;
     list-style-type: none;
     padding: 0;
     display: block;
     max-width: $tocWidth;
-    position: fixed;
+    background: white;
     
-    li {
+    a {
+      display: block;
+      margin: 10px 0;
       padding-left: 10px;
       border-left: 4px solid transparent;
+      text-decoration: none;
+      color: inherit;
+     
       &.active {
         border-color: $clBlue;
+      }
+      
+      &.indent-1 {
+        padding-left: 20px;
+      }
+      &.indent-2 {
+        padding-left: 30px;
       }
     }
   }
   
   .children {
     flex: 1;
-    margin-left: $tocWidth + 20;
+  }
+  
+  // phone
+  @media (max-width: $break-small) {
+    padding: 0 20px;
+  }
+  // desktop
+  @media (min-width: $break-small) {
+    display: flex;
+    
+    .toc {
+      position: fixed;
+    }
+    
+    .children {
+      margin-left: $tocWidth + 20;
+    }
   }
 }

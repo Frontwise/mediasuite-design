@@ -9,28 +9,34 @@ export default class TOC extends Component {
   }
   
   componentDidMount() {
-    document.documentElement.addEventListener('scroll', this.handleScroll, {passive: true});
+    window.addEventListener('scroll', this.handleScroll, {passive: true});
   }
 
   componentWillUnmount() {
-    document.documentElement.removeEventListener('scroll', this.handleScroll);
+    window.removeEventListener('scroll', this.handleScroll);
   }
 
-
-  handleScroll() {
-    console.log('hoi');
-    var scrollTop = document.documentElement.scrollTop;
-    this.refs.nav.getDOMNode()
-    
+  handleScroll = () => {
     var minTop = 999999;
     var activeIndex = this.state.activeIndex;
-    this.props.children.forEach((_, i) => {
-      let top = this.refs[i].getDOMNode().getBoundingClientRect().top;
-      if (top > 0 && top < minTop) {
+    var centerOfScreenY = window.innerHeight / 2;
+    
+    for (var i = 0; i < this.props.children.length; i++) {
+      if (!this.refs[i]) { return; }
+      
+      let rect = this.refs[i].getBoundingClientRect();
+      
+      if (rect.top < centerOfScreenY && rect.bottom > centerOfScreenY) {
+        activeIndex = i;
+        break;
+      }
+      
+      var top = Math.abs(top);
+      if (top < minTop) {
         minTop = top;
         activeIndex = i;
       }
-    });
+    }
     
     this.setState({activeIndex});
   }
@@ -41,18 +47,24 @@ export default class TOC extends Component {
     
     return (
       <div className="TOC">
-        <ul className="toc">
+        <div className="toc">
           {children.map((child, i) =>
-            <li key={i} className={classNames('indent-' + child.indentation, {active: i == activeIndex})} >
+            <a 
+              href={'#' + child.anchor}
+              key={i}
+              className={classNames('indent-' + child.indentation, {active: i === activeIndex})}
+              onClick={() => this.setState({activeIndex: i})}
+            >
               {child.title}
-            </li>
+            </a>
           )}
-        </ul>
+        </div>
         
         <div className="children">
           {children.map((child, i) =>
             <div 
               className="child"
+              id={child.anchor}
               key={i}
               ref={i}
             >

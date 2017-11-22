@@ -13,6 +13,7 @@ class Docs extends Component {
           {
             title: <span>Introduction</span>,
             indentation: 0,
+            anchor: 'intro',
             elem: <div>
               <h1>Introduction</h1>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, aut id, consequatur ipsam quam dolorem magni laborum asperiores assumenda quos voluptatum? Quo dignissimos, possimus voluptatem odio odit fugit ea accusantium. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, aut id, consequatur ipsam quam dolorem magni laborum asperiores assumenda quos voluptatum? Quo dignissimos, possimus voluptatem odio odit fugit ea accusantium.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, aut id, consequatur ipsam quam dolorem magni laborum asperiores assumenda quos voluptatum? Quo dignissimos, possimus voluptatem odio odit fugit ea accusantium.</p>
@@ -23,6 +24,7 @@ class Docs extends Component {
           {
             title: <b>1. Context</b>,
             indentation: 0,
+            anchor: 'context',
             elem: <div>
               <h1>1. Context</h1>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, aut id, consequatur ipsam quam dolorem magni laborum asperiores assumenda quos voluptatum? Quo dignissimos, possimus voluptatem odio odit fugit ea accusantium. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, aut id, consequatur ipsam quam dolorem magni laborum asperiores assumenda quos voluptatum? Quo dignissimos, possimus voluptatem odio odit fugit ea accusantium.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, aut id, consequatur ipsam quam dolorem magni laborum asperiores assumenda quos voluptatum? Quo dignissimos, possimus voluptatem odio odit fugit ea accusantium.</p>
@@ -33,6 +35,7 @@ class Docs extends Component {
           {
             title: <b>2. Data</b>,
             indentation: 0,
+            anchor: 'data',
             elem: <div>
               <h1>2. Data</h1>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, aut id, consequatur ipsam quam dolorem magni laborum asperiores assumenda quos voluptatum? Quo dignissimos, possimus voluptatem odio odit fugit ea accusantium. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, aut id, consequatur ipsam quam dolorem magni laborum asperiores assumenda quos voluptatum? Quo dignissimos, possimus voluptatem odio odit fugit ea accusantium.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, aut id, consequatur ipsam quam dolorem magni laborum asperiores assumenda quos voluptatum? Quo dignissimos, possimus voluptatem odio odit fugit ea accusantium.</p>
@@ -43,6 +46,7 @@ class Docs extends Component {
           {
             title: <span>4.1 User Projects</span>,
             indentation: 1,
+            anchor: 'user projects',
             elem: <div>
               <h3>4.1 User Projects</h3>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, aut id, consequatur ipsam quam dolorem magni laborum asperiores assumenda quos voluptatum? Quo dignissimos, possimus voluptatem odio odit fugit ea accusantium. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, aut id, consequatur ipsam quam dolorem magni laborum asperiores assumenda quos voluptatum? Quo dignissimos, possimus voluptatem odio odit fugit ea accusantium.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, aut id, consequatur ipsam quam dolorem magni laborum asperiores assumenda quos voluptatum? Quo dignissimos, possimus voluptatem odio odit fugit ea accusantium.</p>
