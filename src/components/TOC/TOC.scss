@@ -1,0 +1,27 @@
+.TOC {
+  $tocWidth: 200px;
+  
+  display: flex;
+  
+  .toc {
+    margin-right: 50px;
+    list-style-type: none;
+    padding: 0;
+    display: block;
+    max-width: $tocWidth;
+    position: fixed;
+    
+    li {
+      padding-left: 10px;
+      border-left: 4px solid transparent;
+      &.active {
+        border-color: $clBlue;
+      }
+    }
+  }
+  
+  .children {
+    flex: 1;
+    margin-left: $tocWidth + 20;
+  }
+}

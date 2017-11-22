@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-import { pages } from  '../../data/Pages';
-
 class Help extends Component {
 
   render() {    

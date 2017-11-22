@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Page, Header } from '../';
-import classNames from 'classnames';
 
 /* Images */
 import bigiconClariah from '../../images/bigicon-clariah.png';
