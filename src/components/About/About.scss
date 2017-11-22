@@ -1,0 +1,53 @@
+.page.About {
+  $margin: 20px;
+  
+  .content{
+    @include infoBanner();
+  }
+  
+  .text {
+    max-width: $maxTextBodyWidth;
+    padding: 0 $margin;
+    margin: 60px auto;
+    
+    @media (min-width: 550px) {
+      column-count: 2
+    }
+    
+    > :first-child {
+      margin-top: 0;
+    }
+  }
+  
+  .suite {
+    text-align: center;
+    max-width: $maxTextBodyWidth;
+    margin: 100px auto;
+    
+    h2 {
+      font-size: 20px;
+      text-transform: uppercase;
+    }
+    
+    .block {
+      border: 1px solid $clDarkGrey;
+      border-radius: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      
+      > div {
+        max-width: 176px;
+        margin: $margin;
+      }
+      
+      img {
+        max-width: 100%;
+      }
+    }
+  }
+  
+  .Footer {
+    margin-top: 100px;
+  }
+}

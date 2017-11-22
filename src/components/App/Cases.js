@@ -5,6 +5,7 @@ import Elements from '../Elements/Elements';
 import Homepage from '../Homepage/Homepage';
 import Data from '../Data/Data';
 import Tools from '../Tools/Tools';
+import About from '../About/About';
 import {text} from '../../data/Text';
 
 /** 
@@ -40,4 +41,5 @@ export default [
   newCase('Homepage', (<Homepage /> )),
   newCase('Data', (<Data />)),
   newCase('Tools', (<Tools />)),
+  newCase('About', (<About />)),
 ]
