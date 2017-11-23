@@ -28,11 +28,11 @@ export default class Contact extends Component {
           {
             title: <span>Feedback form</span>,
             indentation: 0,
-            anchor: 'context',
+            anchor: 'contact-context',
             elem: <div>
               <h1>Feedback form</h1>
               <form>
-                {['Name', 'Organization', 'E-mail address'].map((label) => <span>
+                {['Name', 'Organization', 'E-mail address'].map((label, index) => <span key={index}>
                   <label className="label">{ label }</label>
                   <input type="text"/>
                 </span> )}
@@ -48,20 +48,20 @@ export default class Contact extends Component {
           {
             title: <span>External links</span>,
             indentation: 0,
-            anchor: 'links',
+            anchor: 'contact-links',
             elem: <div>
               <h1>External links</h1>
               <div className="external-links">
-                <a href="http://www.lorumipsum.nl/decore/partem.html">
+                <a href="http://www.lorumipsum.nl/decore/partem.html" rel="noopener noreferrer" target="_blank">
                   http://www.lorumipsum.nl/decore/partem.html
                 </a> 
-                <a href="http://www.lorumipsum.nl/decore/partem.html">
+                <a href="http://www.lorumipsum.nl/decore/partem.html" rel="noopener noreferrer" target="_blank">
                   http://www.lorumipsum.nl/decore/partem.html
                 </a> 
-                <a href="http://www.lorumipsum.nl/decore/partem.html">
+                <a href="http://www.lorumipsum.nl/decore/partem.html" rel="noopener noreferrer" target="_blank">
                   http://www.lorumipsum.nl/decore/partem.html
                 </a> 
-                <a href="http://www.lorumipsum.nl/decore/partem.html">
+                <a href="http://www.lorumipsum.nl/decore/partem.html" rel="noopener noreferrer" target="_blank">
                   http://www.lorumipsum.nl/decore/partem.html
                 </a> 
               </div>

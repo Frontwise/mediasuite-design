@@ -1,6 +1,7 @@
 import React from 'react';
 import About from '../About/About';
 import Contact from '../Contact/Contact';
+import Complete from '../Complete/Complete';
 import Data from '../Data/Data';
 import Docs from '../Docs/Docs';
 import Elements from '../Elements/Elements';
@@ -48,4 +49,5 @@ export default [
   newCase('About', (<About />)),
   newCase('Docs', (<Docs />)),
   newCase('Contact', (<Contact />)),
+  newCase('Complete', (<Complete />)),
 ]
