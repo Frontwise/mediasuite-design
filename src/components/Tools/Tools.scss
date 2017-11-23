@@ -18,24 +18,7 @@
     flex-basis: 300px;
     
     .image-wrap {
-      position: relative;
-      
-      // Shadow
-      &::before {
-        content: 'a';
-        position: absolute;
-        width: 70%;
-        left: 15%;
-        height: 20%;
-        bottom: 5px;
-        border-radius: 100%;
-        box-shadow: 0 10px 40px rgba(0,0,0, 0.15);
-      }
-    }
-    
-    img {
-      position: relative;
-      width: 100%;
+      @include image-wrap-shadow();
     }
     
     h3 {

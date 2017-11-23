@@ -1,0 +1,50 @@
+.page.ToolDetails {
+  article {
+    max-width: $maxTextBodyWidth;
+  }
+  
+  aside {
+    width: 300px;
+    max-width: 100%;
+    
+    .image-wrap {
+      @include image-wrap-shadow();
+    }
+    
+    .actions {
+      display: flex;
+      justify-content: flex-end;
+      
+      > :last-child {
+        margin-right: 0;
+      }
+    }
+  }
+  
+  // phone
+  @media (max-width: $break-small - 1) {
+    article {
+      margin: 50px 20px;
+    }
+  }
+  
+  // desktop
+  @media (min-width: $break-small) {
+    article {
+      display: flex;
+      margin: 50px auto;
+      
+      aside {
+        margin-right: 40px;
+      }
+      
+      main {
+        flex: 1;
+        
+        & > :first-child {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+}
