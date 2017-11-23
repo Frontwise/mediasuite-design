@@ -24,8 +24,8 @@ class About extends Component {
             </div>
             
             <div className="actions">
-              <a href="" className="btn">View showcases</a>
-              <a href="" className="btn">Visit our blog</a>
+              <a href="http://rdbg.tuxic.nl/clariahwp5/wordpress/" className="btn" target="_blank" rel="noopener noreferrer">View showcases</a>
+              <a href="http://rdbg.tuxic.nl/clariahwp5/wordpress/" className="btn" target="_blank" rel="noopener noreferrer">Visit our blog</a>
             </div>
           </div>
         </div>

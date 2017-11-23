@@ -62,7 +62,7 @@ class Tools extends Component {
               >
                   Hide
               </a>
-              <a href="" className="btn">view tutorials</a>
+              <a href="http://rdbg.tuxic.nl/clariahwp5/wordpress/" className="btn" target="_blank" rel="noopener noreferrer">View tutorials</a>
             </div>
           </div>
         </div>

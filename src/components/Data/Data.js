@@ -34,7 +34,7 @@ class Data extends Component {
               >
                   Hide
               </a>
-              <a href="" className="btn">Visit CKAN</a>
+              <a href="http://mediasuitedata.clariah.nl/" className="btn" target="_blank" rel="noopener noreferrer">Visit CKAN</a>
             </div>
           </div>
         </div>
