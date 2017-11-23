@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import HeaderExamples from '../Header/HeaderExamples';
-import { Footer } from '../';
+import PropTypes from 'prop-types';
+import { Footer, Header } from '../';
 
 class Page extends Component {
 
@@ -8,7 +8,7 @@ class Page extends Component {
     return (
       <div className={"Page " + (this.props.className ? this.props.className : '') }>
         
-        {typeof this.props.header !== 'undefined' ? this.props.header : <HeaderExamples.NotLoggedIn /> }
+        {typeof this.props.header !== 'undefined' ? this.props.header : <Header.Examples.NotLoggedIn /> }
 
         {this.props.children}
         
@@ -17,6 +17,13 @@ class Page extends Component {
       </div>
     );
   }
+}
+
+
+Page.propTypes = {
+  
+  // optional custom header component
+  header: PropTypes.node
 }
 
 export default Page;

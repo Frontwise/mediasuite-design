@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { pages } from '../../data/Pages';
-import {Homepage, Data, Tools, About, Docs, Contact } from '../';
+import { Header, Homepage, Data, Tools, About, Docs, Contact, Page } from '../';
 
 class Complete extends Component {
 
@@ -51,13 +51,23 @@ class Complete extends Component {
   */
   getPage(page){
     switch(page){
+      case 'home': return (<Homepage />);
       case 'data': return (<Data />);
       case 'tools': return (<Tools />);
       case 'about': return (<About />);
       case 'documentation': return (<Docs />);
       case 'contact': return (<Contact />);
       default:
-        return (<Homepage />)
+        return ((
+          <Page header={<Header.Examples.NotLoggedIn active={page in pages ? page : ''} />}>
+            <div className="content">
+              <div className="text-body">
+                <h1>{page in pages ? pages[page].title : page}</h1>
+                <p>This is a placeholder</p>
+              </div>
+            </div>
+          </Page>
+        ))
     }
   }
 

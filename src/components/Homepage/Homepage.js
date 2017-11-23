@@ -79,7 +79,7 @@ class Homepage extends Component {
             <p>
               In the workspace, you can create and share projects that store research projects. Use your university account to login the Clariah User Space and unlock the full potential of the Media Suite!
             </p>
-            <a href="#" className="btn white" target="_blank" rel="noopener noreferrer">More Information</a>
+            <a href="" className="btn white" target="_blank" rel="noopener noreferrer">More Information</a>
             <a href="#login" className="btn primary">Login</a>
           </li>            
 
@@ -93,7 +93,7 @@ class Homepage extends Component {
             <p>
               The Media Suite is part of CLARIAH Work Package 5. CLARIAH is a project funded by the NWO and KNAW that aims at the realisation of a distributed infrastructure for the humanities and social sciences.
             </p>
-            <a href="#" className="btn default" target="_blank" rel="noopener noreferrer">More Information</a>
+            <a href="" className="btn default" target="_blank" rel="noopener noreferrer">More Information</a>
           </li>            
 
         </ul>
