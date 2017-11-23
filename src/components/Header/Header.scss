@@ -23,7 +23,7 @@ $dropdownWidth: $accountWidth;
 
     &.transparent{
       background-color: rgba($clDark, 0.8);
-      .menu > li a:hover{
+      .menu > li a:hover, .workspace:hover, .account:hover{
         background-color: rgba($clDark, 0.3);
       }
     }
