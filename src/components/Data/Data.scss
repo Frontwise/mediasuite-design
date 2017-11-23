@@ -2,4 +2,18 @@
   .content{
     @include infoBanner();
   }
+
+  .collection-selector-component{
+    background-color: $clGreyTint;
+    height: 400px;
+    text-align: center;
+    color: darken($clGreyTint, 20);
+    margin-bottom: 40px;
+    background: $texturePlaceholderUrl;
+
+    h2{
+      line-height: 400px;
+      text-transform: uppercase;
+    }
+  }
 }

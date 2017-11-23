@@ -40,7 +40,7 @@ class Data extends Component {
         </div>
         
         <div className="collection-selector-component">
-          <h2>[Collection selector component]</h2>
+          <h2>★ Collection selector component ★</h2>
         </div>
           
       </Page>

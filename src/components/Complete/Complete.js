@@ -40,6 +40,13 @@ class Complete extends Component {
   }
 
   /**
+  * Component mounted; trigger hash change to load first page 
+  */
+  componentDidMount(){
+    this.onHashChange();
+  }
+
+  /**
   * Get compoment for given page
   */
   getPage(page){
