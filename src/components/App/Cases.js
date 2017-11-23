@@ -1,13 +1,14 @@
 import React from 'react';
-import Header from '../Header/Header';
-import Page from '../Page/Page';
-import Elements from '../Elements/Elements';
-import Homepage from '../Homepage/Homepage';
-import Data from '../Data/Data';
-import Tools from '../Tools/Tools';
 import About from '../About/About';
-import Docs from '../Docs/Docs';
 import Contact from '../Contact/Contact';
+import Data from '../Data/Data';
+import Docs from '../Docs/Docs';
+import Elements from '../Elements/Elements';
+import Header from '../Header/Header';
+import Homepage from '../Homepage/Homepage';
+import Page from '../Page/Page';
+import Tools from '../Tools/Tools';
+
 import {text} from '../../data/Text';
 
 /** 
