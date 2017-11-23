@@ -32,7 +32,7 @@ class Header extends Component {
   */
   onHashChange(){
     let page = window.location.hash.slice(1);
-    if (!page.startsWith('case-')){
+    if (page in pages){
       this.navigate(page);
     }
   }
