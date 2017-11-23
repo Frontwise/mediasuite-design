@@ -86,6 +86,7 @@ class Homepage extends Component {
         </ul>
         
         {/* Context */}  
+        
         <ul className="cards context">
 
           <li>
