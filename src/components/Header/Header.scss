@@ -472,6 +472,7 @@ $dropdownWidth: $accountWidth;
               margin-left: 0px;
             }
 
+            // tablet and phone
             @media screen and (max-width: $break-small) {
               display: inline-block;
               margin-left: 15px;
@@ -521,6 +522,7 @@ $dropdownWidth: $accountWidth;
       list-style: none;
       margin: 0;
 
+      // phone
       @media screen and (max-width: $break-small) {
         top: 0;
         position: relative;
