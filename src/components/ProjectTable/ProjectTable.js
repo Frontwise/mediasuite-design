@@ -18,7 +18,7 @@ class ProjectTable extends Component {
             <label htmlFor="only-my-projects">Show only my projects</label>
           </div>
 
-          <div className="right">
+          { /*<div className="right">
             <h3>Order</h3>
             <select>
               <option>Newest first</option>
@@ -29,7 +29,7 @@ class ProjectTable extends Component {
               <option>Owner</option>
               <option>Access</option>
             </select>
-          </div>
+          </div> */ }
 
 
         </div>
