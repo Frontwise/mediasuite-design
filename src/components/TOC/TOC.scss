@@ -8,6 +8,7 @@
     display: block;
     max-width: $tocWidth;
     background: white;
+
     
     a {
       display: block;
@@ -44,6 +45,7 @@
     
     .toc {
       position: fixed;
+      z-index: 2;
     }
     
     .children {
