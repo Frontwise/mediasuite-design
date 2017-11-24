@@ -14,11 +14,13 @@ $dropdownWidth: $accountWidth;
   box-sizing: border-box;
   transition: background-color $transition;
 
+  // tablet and phone
   @media screen and (max-width: $break-medium) {
     padding: 0 20px;
     font-size: 15px;
   }
 
+  // tablet
   @media screen and (max-width: $break-small) {
     display: block;
     height: 50px;
@@ -29,6 +31,8 @@ $dropdownWidth: $accountWidth;
   &.active{
     border-bottom: 6px solid $clPrimary;
     background-color: lighten($clDark, 5);
+
+    // phone
     @media screen and (max-width: $break-small) {
       border-bottom: 3px solid $clPrimary;
     }
@@ -61,7 +65,8 @@ $dropdownWidth: $accountWidth;
     color: $clWhite;
     font-family: $fontHeading;
     user-select: none;
-
+    
+    // phone
     @media screen and (max-width: $break-small) {
         height: auto;
         min-height: $headerHeight;
@@ -90,11 +95,13 @@ $dropdownWidth: $accountWidth;
       cursor: pointer;
       transition: opacity $transition;
 
+      // tablet and phone
       @media screen and (max-width: $break-medium) {
         width: $logoWidth * 0.8;
         background-size: 80%;
       }
 
+      // phone
       @media screen and (max-width: $break-small) {
         display:inline-block;
         width: 80%;
@@ -108,6 +115,8 @@ $dropdownWidth: $accountWidth;
 
     .hamburger{
       display: none;
+
+      // phone
       @media screen and (max-width: $break-small) {
         display: inline-block;
         width: 20%;
@@ -130,6 +139,7 @@ $dropdownWidth: $accountWidth;
       vertical-align: top;
       cursor: pointer;
 
+      // phone
       @media screen and (max-width: $break-small) {
         display: block;
       }
@@ -138,6 +148,7 @@ $dropdownWidth: $accountWidth;
         display: inline-block;
         margin: 0;
 
+        // phone
         @media screen and (max-width: $break-small) {
           display: block;
         }
@@ -148,7 +159,7 @@ $dropdownWidth: $accountWidth;
       }
     }
 
-  
+    // phone
     @media screen and (max-width: $break-small) {
       .menu.main, .menu.sub, .workspace, .account{
         display: none !important;
@@ -177,11 +188,13 @@ $dropdownWidth: $accountWidth;
         padding: 0 15px;
         color: lighten($clDark, 40);
 
+        // tablet and phone
         @media screen and (max-width: $break-medium) {
           padding: 0 10px;
           font-size: 13px;          
         }
 
+        // phone
         @media screen and (max-width: $break-small){
           padding: 0 20px;
         }
@@ -201,10 +214,7 @@ $dropdownWidth: $accountWidth;
       display: inline-block;
       float: right;
 
-      @media screen and (min-width: $break-small) {
-        display: inline-block;
-        float: right;        
-      }
+      // phone
       @media screen and (max-width: $break-small) {
         display: block;
         float: none;
@@ -218,6 +228,8 @@ $dropdownWidth: $accountWidth;
       display: inline-block;
       position: relative;
       vertical-align: top;
+
+      // phone
       @media screen and (max-width: $break-small) {
         display: block;
       }
@@ -235,10 +247,12 @@ $dropdownWidth: $accountWidth;
         // active border will cause 'center' background image to move, so absolute pixels
         background-position: top 56px right 20px;
 
+        // only tablet
         @media screen and (max-width: $break-medium) and (min-width: $break-small) {
           padding: 50px 50px 0 15px;
         }
 
+        // phone
         @media screen and (max-width: $break-small) {
           display: block;
           height: auto;
@@ -247,6 +261,8 @@ $dropdownWidth: $accountWidth;
 
         &.active{
           border-bottom: 6px solid $clSecondary;
+
+          // phone
           @media screen and (max-width: $break-small) {
             border-bottom: 3px solid $clSecondary;
           }
@@ -263,6 +279,7 @@ $dropdownWidth: $accountWidth;
           margin-right: 10px;
           margin-top: -2px;
 
+          // tablet and phone
           @media screen and (max-width: $break-medium) {
             display: none;
           }
@@ -278,6 +295,8 @@ $dropdownWidth: $accountWidth;
       // Project list
       .dropdown{
         width: $dropdownWidth * 1.2;
+
+        // phone
         @media screen and (max-width: $break-small) {
           width: 100%;
         }
@@ -296,6 +315,8 @@ $dropdownWidth: $accountWidth;
             background-image: $iconSearchUrl;
             background-position: center right 10px;
             background-repeat: no-repeat;
+
+            // phone
             @media screen and (max-width: $break-small) {
               background-position: center right 20px;
               padding-right: 25px;
@@ -355,6 +376,7 @@ $dropdownWidth: $accountWidth;
       display: inline-block;
       position: relative;
       
+      // phone
       @media screen and (max-width: $break-small) {
         display: block;
       }
@@ -371,8 +393,8 @@ $dropdownWidth: $accountWidth;
         // active border will cause 'center' background image to move, so absolute pixels
         background-position: top 56px right 20px;
 
-       
 
+        // phone
         @media screen and (max-width: $break-small) {
           height: auto;
           width: 100%;
@@ -383,6 +405,7 @@ $dropdownWidth: $accountWidth;
         // active border will cause 'center' background image to move, so absolute pixels
         background-position: top 52px right 20px;
 
+        // only tablet
         @media screen and (max-width: $break-medium) and (min-width: $break-small)  {
           width: $accountWidth * 0.75;
           padding: 50px 50px 0 10px;
@@ -395,6 +418,8 @@ $dropdownWidth: $accountWidth;
         &.active{
           border-bottom: 6px solid $clSecondary;
           background-color: lighten($clDark, 2);
+
+          // phone
           @media screen and (max-width: $break-small) {
             border-bottom: 3px solid $clSecondary;
           }
@@ -415,6 +440,8 @@ $dropdownWidth: $accountWidth;
           vertical-align: top;
           margin-right: 10px;
           margin-top: -2px;
+
+          // tablet and phone
           @media screen and (max-width: $break-medium) {
             display: none;
           }
@@ -422,6 +449,8 @@ $dropdownWidth: $accountWidth;
 
         &.loggedin{
           padding-top: 35px;
+
+          // tablet and phone
           @media screen and (max-width: $break-medium) {
             padding-top: 40px;
           }
@@ -438,6 +467,7 @@ $dropdownWidth: $accountWidth;
             margin-left: 40px;
             font-family: $fontBody;
 
+            // tablet and phone
             @media screen and (max-width: $break-medium) {
               margin-left: 0px;
             }
@@ -453,6 +483,7 @@ $dropdownWidth: $accountWidth;
           .icon-person{
             height: 50px;
 
+            // tablet and phone
             @media screen and (max-width: $break-medium) {
              display: none;
             }
@@ -508,11 +539,12 @@ $dropdownWidth: $accountWidth;
         padding: 10px 15px;
         display: block;
 
-
+        // tablet and phone
         @media screen and (max-width: $break-medium) {
           font-size: 13px;
         }
         
+        // phone
         @media screen and (max-width: $break-small) {
           background-position: center right 20px;
           padding-right: 25px;
