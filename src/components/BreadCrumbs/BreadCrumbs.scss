@@ -10,6 +10,9 @@
   padding: 0;
   padding-left: 40px;
   margin: 0;
+  @media screen and (max-width: $break-medium) {
+    padding-left: 15px;
+  } 
 
   li{
     display: inline-block;

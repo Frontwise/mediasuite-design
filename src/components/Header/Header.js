@@ -67,10 +67,10 @@ class Header extends Component {
 
     // menu item for user projects (with counter)
     let userProjects = this.getMenuItem('userProjects', (<span className="count">{this.props.workspace.projects.count}</span>), );
-
+    console.log(getPageRoot(this.state.active), getPageRoot(this.state.active) === 'workspace');
     return (
-      <div className={classNames("workspace",{ active: getPageRoot(this.state.active) === 'workspace' || this.state.active.startsWith('project-') } )  }>
-        <i className="icon-workspace"/>Workspace
+      <div className="workspace">
+        <a href="#workspace" className={classNames({ active: getPageRoot(this.state.active) === 'workspace' || this.state.active.startsWith('project-') } )}><i className="icon-workspace"/>Workspace</a>
 
         <ul className="dropdown">
           {userProjects}
@@ -156,9 +156,8 @@ class Header extends Component {
     return (
       <div className="Header">
         <div className={classNames('top-bar', {transparent: this.state.transparent } ) } >
-          <a href="#home">
-            <div className="logo" />
-          </a>
+          <a href="#home" className="logo"></a>
+          <div className="hamburger"/>
 
           <ul className="menu main">
             {this.getMenuItem('data')}

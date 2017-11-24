@@ -53,5 +53,5 @@ export default [
   newCase('Docs', (<Docs />)),
   newCase('Contact', (<Contact />)),
   newCase('Projects', (<Projects />)),
-  newCase('Complete', (<Complete />)),  
+  newCase('★ Complete ★', (<Complete />)),  
 ]
