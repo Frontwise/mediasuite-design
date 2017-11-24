@@ -55,7 +55,7 @@ class ProjectTable extends Component {
                   <td className="primary"><a href={"#projectDetails-" + project.id}>{project.title}</a></td>
                   <td className="number">{project.getBookmarkCount()}</td>
                   <td>{project.owner} {project.getCollaboratorCount() ? <span className="collaborators">{project.getCollaboratorCount()} Collaborator{project.getCollaboratorCount() !== 1 ? 's' : ''}</span> : ''}</td>
-                  <td>{project.getAccess(currentUser)}</td>
+                  <td className="access">{project.getAccess(currentUser)}</td>
                   <td>{project.canDelete(currentUser) ? <a href={"#deleteProject-" + project.id} className="btn blank warning">Delete</a> : ''}</td>
                   <td>{project.canExport(currentUser) ? <a href={"#exportProject-" + project.id} className="btn blank">Export</a> : ''}</td>
                   <td>{project.canOpen(currentUser) ? <a href={"#projectDetails-" + project.id} className="btn">Open</a> : ''}</td>

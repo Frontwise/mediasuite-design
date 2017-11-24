@@ -70,6 +70,7 @@
     padding:0;
     border: 0;
     border-collapse: collapse;
+
     thead{
       th{
         text-align: left;
@@ -89,6 +90,7 @@
         }
       }
     }
+
     tbody{
       tr:nth-child(even) {
         background-color: $clGrey;
@@ -113,6 +115,18 @@
         &.number{
           text-align: right;
           padding-right: 8px;
+        }
+
+        .collaborators{
+          display: inline-block;
+          color: $clPrimaryAlt;
+          text-transform: uppercase;
+          font-size: 12px;
+          font-family: $fontHeading;
+        }
+
+        &.access{
+          text-transform: capitalize;
         }
 
         .btn{
