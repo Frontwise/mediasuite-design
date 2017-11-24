@@ -20,25 +20,25 @@ class Tools extends Component {
       {
         name: 'Collection inspector',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et quidem Arcesilas tuus, etsi fuit in disserendo pertinacior.',
-        detailsUrl: '#',
+        detailsUrl: '#toolDetails',
         url: '#',
       },
       {
         name: 'Exploratory browser',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et quidem Arcesilas tuus, etsi fuit in disserendo pertinacior.',
-        detailsUrl: '#',
+        detailsUrl: '#toolDetails',
         url: '#',
       },
       {
         name: 'Basic faceted search',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et quidem Arcesilas tuus, etsi fuit in disserendo pertinacior.',
-        detailsUrl: '#',
+        detailsUrl: '#toolDetails',
         url: '#',
       },
       {
         name: 'Comparative search',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et quidem Arcesilas tuus, etsi fuit in disserendo pertinacior.',
-        detailsUrl: '#',
+        detailsUrl: '#toolDetails',
         url: '#',
       },
     ];

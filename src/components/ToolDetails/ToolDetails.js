@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Page, Header } from '../';
-import classNames from 'classnames';
 
 /* Images */
 import placeholder from '../../images/placeholder.svg';
@@ -8,12 +7,12 @@ import placeholder from '../../images/placeholder.svg';
 export default class ToolDetails extends Component {
   render() {
     return (
-      <Page header={<Header.Examples.NotLoggedIn active="tooldetails" />} className="page ToolDetails">
+      <Page header={<Header.Examples.NotLoggedIn active="toolDetails" />} className="page ToolDetails">
       
         <article>
           <aside>
             <div className="image-wrap">
-              <img src={placeholder} alt="Exploratory Search" />
+              <img src={placeholder} alt="Exploratory browser" />
             </div>
             
             <div className="actions">
@@ -22,7 +21,7 @@ export default class ToolDetails extends Component {
           </aside>
           
           <main>
-            <h1>Exploratory Search</h1>
+            <h1>Exploratory browser</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat recusandae incidunt, dolorem earum et commodi iusto obcaecati! Praesentium modi amet dolores cumque, aliquam id fuga voluptates quam mollitia? Ullam quos adipisci vitae dignissimos, illum nesciunt cupiditate voluptatum ut officia quasi reiciendis minima architecto, sapiente praesentium repellendus quidem eius unde consequatur impedit. Iste accusamus dolores necessitatibus est quo quibusdam magnam error ipsa qui sint, dolor quos vel labore, illum iure. Aliquam laborum fugit autem itaque libero asperiores earum optio laudantium, quos vitae nulla voluptate culpa architecto perferendis, adipisci nihil, temporibus necessitatibus, illum sequi error iusto ipsa. Tempora consequuntur quia possimus deleniti?</p>
             <p>Lorem ipsum dolor sit amet, coto, sapiente praesentium repellendus quidem eius unde consequatur impedit. Iste accusamus dolores necessitatibus est quo quibusdam magnam error ipsa qui sint, dolor quos vel labore, illum iure. Aliquam laborum fugit autem itaque libero asperiores earum optio laudantium, quos vitae nulla voluptate culpa architecto perferendis, adipisci nihil, temporibus necessitatibus, illum sequi error iusto ipsa. Tempora consequuntur quia possimus deleniti?</p>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat recusandae incidunt, dolorem earum et commodi iusto obcaecati! Praesentium modi amet dolores cumque, aliquam id fuga voluptates quam mollitia? Ullam quos adipisci vitae dignissimos, illum nesciunt cupiditate voluptatum ut officia quasi reiciendis minima architecto, sapiente praesentium repellendus quidem eius unde consequatur impedit. Iste accusamus dolores necessitatibus est quo quibusdam magnam error ipsa qui sint, dolor quos vel labore, illum iure. Aliquam laborum fugit autem itaque libero asperiores earum optio laudantium, quos vitae nulla voluptate culpa architecto perferendis, adipisci nihil, temporibus necessitatibus, illum sequi error iusto ipsa. Tempora consequuntur quia possimus deleniti?</p>
