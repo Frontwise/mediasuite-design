@@ -6,14 +6,23 @@ export default class TOC extends Component {
   constructor() {
     super();
     this.state = {activeIndex: 0};
+    this.handleScrollFunc = this.handleScroll.bind(this);
   }
 
   componentDidMount() {
-    window.addEventListener('scroll', this.handleScroll.bind(this), {passive: true});
+    this.listenToScroll(true);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('scroll', this.handleScroll.bind(this));
+    this.listenToScroll(false); 
+  }
+
+  listenToScroll(active){
+    if (active){
+      window.addEventListener('scroll', this.handleScrollFunc, {passive: true});
+    } else{
+      window.removeEventListener('scroll', this.handleScrollFunc);  
+    }
   }
 
   handleScroll() {
@@ -41,6 +50,20 @@ export default class TOC extends Component {
     this.setState({activeIndex});
   }
 
+  setActive(index){
+    // disable scroll listener, so we keep the highlight state of the
+    // clicked elements
+    this.listenToScroll(false); 
+
+    // update state
+    this.setState({activeIndex: index}); 
+
+    // wait 100ms before reenabling scroll listener, giving the browser
+    // some time to scroll to the anchor
+    // this is a little hacky, but it works! :)
+    setTimeout(this.listenToScroll.bind(this,true), 100);
+  }
+
   render() {
     const {children} = this.props;
     const {activeIndex} = this.state;
@@ -53,7 +76,7 @@ export default class TOC extends Component {
               href={'#' + child.anchor}
               key={i}
               className={classNames('indent-' + child.indentation, {active: i === activeIndex})}
-              onClick={() => this.setState({activeIndex: i})}
+              onClick={this.setActive.bind(this, i)}
             >
               {child.title}
             </a>
