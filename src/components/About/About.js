@@ -12,7 +12,7 @@ class About extends Component {
   render() {
     
     return (
-      <Page header={<Header.Examples.NotLoggedIn active="about" />} className="page About">
+      <Page header={<Header.Examples.NotLoggedIn active="about" help="" />} className="page About">
       
         <div className="content">
           <img src={bigiconClariah} alt="Clariah"/>

@@ -7,7 +7,7 @@ class Docs extends Component {
   render() {
 
     return (
-      <Page header={<Header.Examples.NotLoggedIn active="documentation" />} className="page Docs">
+      <Page header={<Header.Examples.NotLoggedIn active="documentation" help="" />} className="page Docs">
 
         <TOC children={[
           {

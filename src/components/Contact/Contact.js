@@ -7,7 +7,7 @@ export default class Contact extends Component {
   render() {
     
     return (
-      <Page header={<Header.Examples.NotLoggedIn active="contact" />} className="page Contact">
+      <Page header={<Header.Examples.NotLoggedIn active="contact" help=""  />} className="page Contact">
       
         <TOC children={[
           {
