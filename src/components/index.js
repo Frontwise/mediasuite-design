@@ -10,6 +10,8 @@ import Header from './Header/Header';
 import Help from './Help/Help';
 import Homepage from './Homepage/Homepage';
 import Page from './Page/Page';
+import Projects from './Projects/Projects';
+import ProjectTable from './ProjectTable/ProjectTable';
 import Tools from './Tools/Tools';
 
 export{
@@ -25,5 +27,7 @@ export{
   Help,  
   Homepage,
   Page,
+  Projects,
+  ProjectTable,
   Tools
 }

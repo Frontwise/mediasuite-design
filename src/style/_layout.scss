@@ -2,9 +2,8 @@ body{
   padding:0;
   margin:0;
   font-family: $fontBody;
-  font-size: 13.5px;  
+  font-size: 13.5px;    
 }
-
 
 /**
 * Content
@@ -126,8 +125,7 @@ p{
 
 input[type=text], textarea{
   border: 1px solid $clGreyTint;
-  border-left-width: 2px;
-  outline: 0;
+  border-left-width: 2px;  
   padding: 6px 10px;
   border-radius: 2px;
   font-family: $fontBody;
@@ -139,6 +137,12 @@ input[type=text], textarea{
     border-left: 2px solid $clPrimary;
   }
 }
+
+
+input, textarea, select{
+  outline-color: $clPrimary;
+}
+
 
 textarea{
   min-width: 400px;

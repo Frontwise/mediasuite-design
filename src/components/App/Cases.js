@@ -8,6 +8,7 @@ import Elements from '../Elements/Elements';
 import Header from '../Header/Header';
 import Homepage from '../Homepage/Homepage';
 import Page from '../Page/Page';
+import Projects from '../Projects/Projects';
 import Tools from '../Tools/Tools';
 
 import {text} from '../../data/Text';
@@ -49,5 +50,6 @@ export default [
   newCase('About', (<About />)),
   newCase('Docs', (<Docs />)),
   newCase('Contact', (<Contact />)),
-  newCase('Complete', (<Complete />)),
+  newCase('Projects', (<Projects />)),
+  newCase('Complete', (<Complete />)),  
 ]
