@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ProjectList from './ProjectList';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { pages } from '../../data/Pages';
+import { pages, getPageRoot } from '../../data/Pages';
 import HeaderExamples from './HeaderExamples';
 import { BreadCrumbs, Help } from '../';
 
@@ -69,7 +69,7 @@ class Header extends Component {
     let userProjects = this.getMenuItem('userProjects', (<span className="count">{this.props.workspace.projects.count}</span>), );
 
     return (
-      <div className={classNames("workspace",{ active: ['workspace', 'userProjects', 'newProject'].includes(this.state.active) || this.state.active.startsWith('project-') } )  }>
+      <div className={classNames("workspace",{ active: getPageRoot(this.state.active) === 'workspace' || this.state.active.startsWith('project-') } )  }>
         <i className="icon-workspace"/>Workspace
 
         <ul className="dropdown">
@@ -110,7 +110,7 @@ class Header extends Component {
       // Account button
       return (
         <div className="account">
-          <a className={classNames("account loggedin", {active: ['login', 'myprofile', 'signout'].includes(this.state.active)})}
+          <a className={classNames("account loggedin", {active: getPageRoot(this.state.active) === 'account'})}
            href={"#myprofile"}>
            <i className="icon-person"/>{pages.account.title}
            <span className="username">{user.name}</span>
@@ -144,7 +144,7 @@ class Header extends Component {
     let title = pages[page].title || page;
     return(
       <li>
-        <a className={classNames({active : this.state.active === page})}  href={"#"+page}>{title}{children}</a>
+        <a className={classNames({active : getPageRoot(this.state.active) === page})}  href={"#"+page}>{title}{children}</a>
       </li>
     );
   }

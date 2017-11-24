@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { pages } from '../../data/Pages';
-import { Header, Homepage, Data, Tools, About, Docs, Contact, Page } from '../';
+import { Header, Homepage, Data, Tools, ToolDetails, About, Docs, Contact, Page } from '../';
 
 class Complete extends Component {
 
@@ -54,6 +54,7 @@ class Complete extends Component {
       case 'home': return (<Homepage />);
       case 'data': return (<Data />);
       case 'tools': return (<Tools />);
+      case 'toolDetails': return (<ToolDetails />);
       case 'about': return (<About />);
       case 'documentation': return (<Docs />);
       case 'contact': return (<Contact />);

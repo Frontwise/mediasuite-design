@@ -1,5 +1,5 @@
-import App from './App/App';
 import About from './About/About';
+import App from './App/App';
 import BreadCrumbs from './BreadCrumbs/BreadCrumbs';
 import Contact from './Contact/Contact';
 import Data from './Data/Data';
@@ -12,6 +12,7 @@ import Homepage from './Homepage/Homepage';
 import Page from './Page/Page';
 import Projects from './Projects/Projects';
 import ProjectTable from './ProjectTable/ProjectTable';
+import ToolDetails from './ToolDetails/ToolDetails';
 import Tools from './Tools/Tools';
 
 export{
@@ -29,5 +30,6 @@ export{
   Page,
   Projects,
   ProjectTable,
-  Tools
+  ToolDetails,
+  Tools,
 }

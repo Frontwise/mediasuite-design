@@ -10,6 +10,7 @@ import Homepage from '../Homepage/Homepage';
 import Page from '../Page/Page';
 import Projects from '../Projects/Projects';
 import Tools from '../Tools/Tools';
+import ToolDetails from '../ToolDetails/ToolDetails';
 
 import {text} from '../../data/Text';
 
@@ -47,6 +48,7 @@ export default [
   newCase('Homepage', (<Homepage /> )),
   newCase('Data', (<Data />)),
   newCase('Tools', (<Tools />)),
+  newCase('ToolDetails', (<ToolDetails />)),
   newCase('About', (<About />)),
   newCase('Docs', (<Docs />)),
   newCase('Contact', (<Contact />)),

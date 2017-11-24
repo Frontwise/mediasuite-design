@@ -7,6 +7,7 @@ export const pages = {
   data: {title: 'Data'},
   
   tools: {title: 'Tools'},
+    toolDetails: {title: 'Tooldetails', parent: 'tools'},
   
   workspace: {title: 'Workspace'},
     userProjects: {title: 'User Projects', parent: 'workspace'},
@@ -29,4 +30,15 @@ export const pages = {
   account: {title: 'Account'},
     myprofile: {title: 'My profile', parent: 'account'},
     signout: {title: 'Sign out', parent: 'account'}
+}
+
+export const getPageRoot = (page) =>{
+  if (!(page in pages)){
+    return  '';
+  }
+  console.log(page, pages);
+  while(pages[page].parent ){
+    page = pages[page].parent;
+  }
+  return page;
 }
