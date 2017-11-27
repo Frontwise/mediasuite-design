@@ -174,7 +174,10 @@ $dropdownWidth: $accountWidth;
     // Main menu
 
     .menu.main{
-      border-top: 1px solid lighten($clDark, 20);
+      // phone
+      @media screen and (max-width: $break-small){
+        border-top: 1px solid lighten($clDark, 20);
+      }
     }
 
 
