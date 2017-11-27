@@ -65,28 +65,74 @@
   }
 
 
+  .error{
+    padding:10px;
+  }
+
   table{
     margin: 0;
     padding:0;
     border: 0;
     border-collapse: collapse;
+    min-width: 100%;
+
+    &.loading{
+      opacity: 0.3;
+    }
 
     thead{
       th{
         text-align: left;
         background-color: $clDark;
+         border-bottom: 2px solid $clDark;
         padding: 10px 5px;
+        padding-right: 15px;
         color: $clWhite;
         font-family: $fontHeading;
         font-size: 15px;
         font-weight: 400;
+
         .bookmark-icon{
           background-image: $iconBookmarkWhiteUrl;
           background-repeat: no-repeat;
-          background-position: center;
+          background-position: center left;
           display: inline-block;
           width: 20px;
           height: 20px;
+          margin-right: 4px;
+        }
+
+        &.sortable{
+          cursor: pointer;
+          &:hover{
+            border-bottom: 2px solid $clDarkGrey;
+          }
+
+        }
+
+        &.active{
+          position: relative;
+          padding-right: 15px;
+          border-bottom: 2px solid $clSecondary;
+
+          &:hover{
+            border-bottom: 2px solid $clSecondary;
+          }
+
+          &:after{
+            content: "";
+            position: absolute;
+            right: 5px;
+            border-bottom: 7px solid $clWhite;
+            border-left: 7px solid transparent;
+            transform: rotate(45deg);
+            margin-top: 5px;
+          }
+
+          &.desc:after{
+            margin-top: 8px;
+            transform: rotate(-135deg);
+          }
         }
       }
     }

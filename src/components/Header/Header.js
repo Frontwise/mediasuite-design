@@ -67,7 +67,6 @@ class Header extends Component {
 
     // menu item for user projects (with counter)
     let userProjects = this.getMenuItem('userProjects', (<span className="count">{this.props.workspace.projects.count}</span>), );
-    console.log(getPageRoot(this.state.active), getPageRoot(this.state.active) === 'workspace');
     return (
       <div className="workspace">
         <a href="#workspace" className={classNames({ active: getPageRoot(this.state.active) === 'workspace' || this.state.active.startsWith('project-') } )}><i className="icon-workspace"/>Workspace</a>

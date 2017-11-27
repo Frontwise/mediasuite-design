@@ -1,11 +1,169 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 class ProjectTable extends Component {
+  constructor(props){
+    super(props);
+
+    this.state={
+      projects: [],
+      sortedProjects: [],
+      loading: true,
+      filter:{
+        keywords: '',
+        currentUser: false,
+      },
+      sort:{
+        field: null,
+        order: 'asc'
+      }
+    }
+  }
+
+
+  /**
+   * Call filter callback
+   */
+  update(){
+
+    this.setState({
+      loading: true
+    });
+
+    this.props.api.list(this.props.user.id, this.state.filter, this.setProjects.bind(this));
+  }
+
+
+  /**
+   * Sort projects based on sort
+   */
+   sortProjects(projects, sort){
+     let sorted = projects;
+     switch(sort.field){
+      case 'name':
+        sorted.sort((a,b)=>(a.name > b.name));
+      break;
+      case 'bookmarks':
+        sorted.sort((a,b)=>(a.bookmarks.length - b.bookmarks.length));
+      break;
+      case 'owner':
+        sorted.sort((a,b)=>(a.owner.name > b.owner.name));
+      break;
+      case 'access':
+        sorted.sort((a,b)=>(a.getAccess(this.props.user.id) > b.getAccess(this.props.user.id)));
+      break;
+      default:
+        // no sorting,just return
+        return sorted;
+     }
+
+     return sort.order === 'desc' ? sorted.reverse() : sorted;
+
+   }
+
+  /**
+   * Set new list of projects to state
+   */
+  setProjects(projects){
+    this.setState({
+      projects,
+      sortedProjects: this.sortProjects(projects, this.state.sort),
+      loading: false,
+    });
+  }
+
+
+  /**
+   * Keywords filter changes
+   */
+  keywordsChange(e){
+    this.setState({
+      filter: Object.assign({}, this.state.filter, {
+        keywords: e.target.value
+      })
+    });
+  }
+
+  /**
+   * Keywords filter changes
+   */
+  currentUserChange(e){
+    this.setState({
+      filter: Object.assign({}, this.state.filter, {
+        currentUser: e.target.checked
+      })
+    });
+  }
+
+  /**
+   * After mounting, retrieve project data
+   */
+  componentDidMount(){
+    this.update();
+  }
+  /**
+   * Listen for updates, request new data if filter has been changed
+   */
+  componentDidUpdate(){
+    if (this.lastFilter !== this.state.filter){
+      this.lastFilter = this.state.filter;
+      this.update();
+    }
+  }
+
+
+
+  /**
+   * Delete project
+   */
+  deleteProject(project){
+    if (window.confirm('Are you sure you want to delete project ' + project.name)){
+      this.props.api.delete(project.id, (status)=>{
+        if (status && status.success){
+
+          // just retrieve the latest data
+          this.update();
+        }
+      });
+    }
+  }
+
+  /**
+   * Export project
+   */
+  exportProject(project){
+    window.open("data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(project, null, 4)));
+  }
+
+  /**
+   * Sort projects
+   */
+  sort(field){
+    let sort = {
+        field: field,
+        order: this.state.sort.field === field && this.state.sort.order === 'asc' ? 'desc' : 'asc'
+      };
+
+    this.setState({
+      sort,
+      sortedProjects: this.sortProjects(this.state.projects, sort),
+    });
+
+  }
+
+
+
+  getHeader(field, content){
+    let active = this.state.sort.field == field;
+    return (<th className={classNames('sortable', {'active': active, 'desc': active && this.state.sort.order == 'desc' })}onClick={this.sort.bind(this, field)}>{content}</th>);
+  }
+
 
   render() {
-    let projects = this.props.projects;
-    let currentUser = this.props.currentUser;
+    let projects = this.state.projects;
+    let currentUser = this.props.user;
+    let currentUserId = currentUser.id;
 
     return (
       <div className="ProjectTable">
@@ -13,9 +171,18 @@ class ProjectTable extends Component {
         <div className="filters">
           <div className="left">
             <h3>Filters</h3>
-            <input className="search" type="text" placeholder="Search" />
-            <input type="checkbox" id="only-my-projects" />
-            <label htmlFor="only-my-projects">Show only my projects</label>
+            <input className="search"
+                   type="text"
+                   placeholder="Search"
+                   value={this.state.filter.keywords}
+                   onChange={this.keywordsChange.bind(this)}
+                   />
+            <input type="checkbox"
+                   id="current-user"
+                   checked={this.state.filter.currentUser}
+                   onChange={this.currentUserChange.bind(this)}
+                   />
+            <label htmlFor="current-user">Show only my projects</label>
           </div>
 
           { /*<div className="right">
@@ -34,36 +201,45 @@ class ProjectTable extends Component {
 
         </div>
 
-        <table>
-          <thead>
-            <tr>
-              <th><input type="checkbox" /></th>
-              <th>Name</th>
-              <th><i className="bookmark-icon"/></th>
-              <th>Owner</th>
-              <th>Access</th>
-              <th></th>
-              <th></th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
 
-              {projects.map((project)=>(
-                <tr key={project.id}>
-                  <td><input type="checkbox" /></td>
-                  <td className="primary"><a href={"#projectDetails-" + project.id}>{project.title}</a></td>
-                  <td className="number">{project.getBookmarkCount()}</td>
-                  <td>{project.owner} {project.getCollaboratorCount() ? <span className="collaborators">{project.getCollaboratorCount()} Collaborator{project.getCollaboratorCount() !== 1 ? 's' : ''}</span> : ''}</td>
-                  <td className="access">{project.getAccess(currentUser)}</td>
-                  <td>{project.canDelete(currentUser) ? <a href={"#deleteProject-" + project.id} className="btn blank warning">Delete</a> : ''}</td>
-                  <td>{project.canExport(currentUser) ? <a href={"#exportProject-" + project.id} className="btn blank">Export</a> : ''}</td>
-                  <td>{project.canOpen(currentUser) ? <a href={"#projectDetails-" + project.id} className="btn">Open</a> : ''}</td>
-                </tr>
-              ))}
+        { projects.length ?
+          <table className={this.state.loading ? 'loading': ''}>
+            <thead>
+              <tr>
+                <th><input type="checkbox" /></th>
+                {this.getHeader('name','Name')}
+                {this.getHeader('bookmarks',<i className="bookmark-icon"/>)}
+                {this.getHeader('owner','Owner')}
+                {this.getHeader('access','Access')}
+                <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
 
-          </tbody>
-        </table>
+                {projects.map((project)=>(
+                  <tr key={project.id}>
+                    <td><input type="checkbox" /></td>
+                    <td className="primary"><a href={"#projectDetails-" + project.id}>{project.name}</a></td>
+                    <td className="number">{project.getBookmarkCount()}</td>
+                    <td>{project.owner.name} {project.getCollaboratorCount() ? <span className="collaborators">{project.getCollaboratorCount()} Collaborator{project.getCollaboratorCount() !== 1 ? 's' : ''}</span> : ''}</td>
+                    <td className="access">{project.getAccess(currentUserId)}</td>
+                    <td>{project.canDelete(currentUserId) ? <a className="btn blank warning" onClick={this.deleteProject.bind(this,project)}>Delete</a> : ''}</td>
+                    <td>{project.canExport(currentUserId) ? <a className="btn blank" onClick={this.exportProject.bind(this,project)}>Export</a> : ''}</td>
+                    <td>{project.canOpen(currentUserId) ? <a href={"#projectDetails-" + project.id} className="btn">Open</a> : ''}</td>
+                  </tr>
+                ))}
+
+            </tbody>
+          </table>
+          :
+          this.state.loading ?
+            <h3 className="error">Loading...</h3>
+            :
+            <h3 className="error">No projects found</h3>
+
+        }
       </div>
     );
   }
@@ -71,11 +247,15 @@ class ProjectTable extends Component {
 
 ProjectTable.propTypes = {
 
-  // list of projects
-  projects: PropTypes.array,
+  // project api
+  api: PropTypes.shape({
+    list: PropTypes.func.isRequired
+  }),
 
-  // current user id, used for defining access roles per project
-  currentUser: PropTypes.string,
+  // current user object used for defining access roles per project
+  user: PropTypes.shape({
+    id: PropTypes.number.isRequired
+  }).isRequired,
 }
 
 export default ProjectTable;

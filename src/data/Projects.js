@@ -1,29 +1,38 @@
-/** 
+import {users} from './Users';
+
+/**
 * Project
 */
 class Project{
-  constructor (id, title, description, isPublic, owner, collaborators=[], bookmarks = []){
+  constructor (id, name, description, isPrivate, owner, collaborators=[], bookmarks = []){
     this.id = id;
-    this.title = title;
+    this.name = name;
     this.description = description;
-    this.isPublic = isPublic;
+    this.isPrivate = isPrivate;
     this.owner = owner;
+    this.created = new Date();
+    this.updated = new Date();
+
     this.collaborators = collaborators;
     this.bookmarks = bookmarks;
-    
+    this.subjects = [];
   }
 
-  getAccess(user){   
-    if (this.owner === user){
+  getAccess(userId){
+    if (this.owner.id === userId){
       return 'admin';
     }
-    if (this.collaborators.includes(user)){
+    if (this.collaborators.includes(userId)){
       return 'collaborator';
     }
-    if (this.isPublic){
+    if (this.isPublic()){
       return 'public';
     }
     return false;
+  }
+
+  isPublic(){
+    return !this.isPrivate;
   }
 
   getBookmarkCount(){
@@ -34,40 +43,49 @@ class Project{
     return this.collaborators ? this.collaborators.length : 0;
   }
 
-  canDelete(user){
-    return this.getAccess(user) === 'admin';
+  canDelete(userId){
+    return this.getAccess(userId) === 'admin';
   }
 
-  canExport(user){
-    return true;
+  canExport(userId){
+    return this.getAccess(userId);
   }
 
-  canOpen(user){
-    return true;
+  canOpen(userId){
+    return this.getAccess(userId);
   }
 
-  isOwner(user){
-    return this.owner === user;
+  isOwner(userId){
+    return this.owner.id === userId;
   }
 }
 
-let currentUser = 'jan_janssen';
-let user1 = 'piet_pietsen';
-let user2 = 'hans_hanssen';
+let currentUser = users[0];
+let user1 = users[1];
+let user2 = users[2];
 let exampleDescription = 'Lorem ipsum dolor sit amet, nec te atqui scribentur.';
 
 /**
 * Some example projects with different kind of configurations/owners
 */
-export const projects = [
+export let projects = [
   new Project(1, "Watersnoodramp", exampleDescription, true, currentUser, [user1, user2]),
   new Project(2, "Pim Fortuyn", exampleDescription, true, currentUser, [user1]),
   new Project(3, "Immigratie", exampleDescription, true, currentUser),
-  new Project(4, "Paars kabinet", exampleDescription, true, user1),
-  new Project(5, "Nationale rampen", exampleDescription, true, user1, [currentUser]),
-  new Project(6, "Rol van Radio bij nationale rampen gedurende de nadagen van de Tweede Wereldoorlog", exampleDescription, true, user1),
-  new Project(7, "Het leven van Koningin Beatrix", exampleDescription, true, currentUser, [user1, user2]),
-  new Project(8, "Voedselveiligheid in het nieuws", exampleDescription, true, currentUser, [user1, user2]),
-  new Project(9, "Censuur op de buis", exampleDescription, true, currentUser, [user1, user2]),
-  new Project(10, "Spoorwegen op glad ijs", exampleDescription, true, user2),
+  new Project(4, "Paars kabinet", exampleDescription, false, user1),
+  new Project(5, "Nationale rampen", exampleDescription, false, user1, [currentUser]),
+  new Project(6, "Rol van Radio bij nationale rampen gedurende de nadagen van de Tweede Wereldoorlog", exampleDescription, false, user1),
+  new Project(7, "Het leven van Koningin Beatrix", exampleDescription, false, currentUser, [user1, user2]),
+  new Project(8, "Voedselveiligheid in het nieuws", exampleDescription, false, currentUser, [user1, user2]),
+  new Project(9, "Censuur op de buis", exampleDescription, false, currentUser, [user1, user2]),
+  new Project(10, "Spoorwegen op glad ijs", exampleDescription, false, user2),
+  new Project(11, "Mijn privé project", exampleDescription, true, user2),
 ];
+
+/**
+* Delete project
+*/
+
+export const deleteProject = (id) =>{
+  projects = projects.filter((project)=>(project.id!== id));
+}
