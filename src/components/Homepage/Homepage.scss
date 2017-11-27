@@ -3,7 +3,7 @@
   .banner{
     top: 0;
     z-index:1;
-    height: 600px;
+    height: 450px;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -15,10 +15,10 @@
     
       .intro{      
         position: absolute;
-        width: 450px;
+        width: 480px;
         right: 0;
-        top: 100px;
-        padding: 20px 40px;        
+        top: 55px;
+        padding: 15px 30px;        
         box-sizing: border-box;
         background-color: $clWhite;
         box-shadow: 0 10px 20px rgba(0,0,0,0.4);
@@ -80,7 +80,7 @@
     }
 
     &.offer{
-      padding: 50px 0;
+      padding: 25px 0;
       @media screen and (max-width: $break-small) {
         justify-content: center;      
       }
@@ -88,7 +88,7 @@
 
     &.workspace{
       justify-content: center;
-      padding: 120px 0;
+      padding: 80px 0;
       background-color: $clGrey;
       background-repeat: no-repeat;
       background-size: cover;
@@ -101,7 +101,7 @@
 
     &.context{
       justify-content: center;
-      padding: 120px 0;
+      padding: 80px 0;
       li img{
         width: 215px;
       }
