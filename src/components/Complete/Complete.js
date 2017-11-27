@@ -40,10 +40,10 @@ class Complete extends Component {
   }
 
   /**
-  * Component mounted; trigger hash change to load first page 
+  * Component mounted; always start at home
   */
   componentDidMount(){
-    this.onHashChange();
+    this.navigate('home');
   }
 
   /**
