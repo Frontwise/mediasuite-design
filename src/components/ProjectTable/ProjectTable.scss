@@ -70,120 +70,26 @@
   }
 
   table{
-    margin: 0;
-    padding:0;
-    border: 0;
-    border-collapse: collapse;
-    min-width: 100%;
-
-    &.loading{
-      opacity: 0.3;
+    .bookmark-icon{
+      background-image: $iconBookmarkWhiteUrl;
+      background-repeat: no-repeat;
+      background-position: center left;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      margin-right: 4px;
     }
 
-    thead{
-      th{
-        text-align: left;
-        background-color: $clDark;
-         border-bottom: 2px solid $clDark;
-        padding: 10px 5px;
-        padding-right: 15px;
-        color: $clWhite;
-        font-family: $fontHeading;
-        font-size: 15px;
-        font-weight: 400;
-
-        .bookmark-icon{
-          background-image: $iconBookmarkWhiteUrl;
-          background-repeat: no-repeat;
-          background-position: center left;
-          display: inline-block;
-          width: 20px;
-          height: 20px;
-          margin-right: 4px;
-        }
-
-        &.sortable{
-          cursor: pointer;
-          &:hover{
-            border-bottom: 2px solid $clDarkGrey;
-          }
-
-        }
-
-        &.active{
-          position: relative;
-          padding-right: 15px;
-          border-bottom: 2px solid $clSecondary;
-
-          &:hover{
-            border-bottom: 2px solid $clSecondary;
-          }
-
-          &:after{
-            content: "";
-            position: absolute;
-            right: 5px;
-            border-bottom: 7px solid $clWhite;
-            border-left: 7px solid transparent;
-            transform: rotate(45deg);
-            margin-top: 5px;
-          }
-
-          &.desc:after{
-            margin-top: 8px;
-            transform: rotate(-135deg);
-          }
-        }
-      }
+    .collaborators{
+      display: inline-block;
+      color: $clPrimaryAlt;
+      text-transform: uppercase;
+      font-size: 12px;
+      font-family: $fontHeading;
     }
 
-    tbody{
-      tr:nth-child(even) {
-        background-color: $clGrey;
-      }
-
-      td{
-        padding: 10px 5px;
-        border-bottom: 1px solid $clGreyTint;
-        max-width: 20%;
-
-        &.primary{
-          a{
-            font-weight: 600;
-            text-decoration: none;
-            color: $clDark;
-            &:hover{
-              text-decoration: underline;
-            }
-          }
-        }
-
-        &.number{
-          text-align: right;
-          padding-right: 8px;
-        }
-
-        .collaborators{
-          display: inline-block;
-          color: $clPrimaryAlt;
-          text-transform: uppercase;
-          font-size: 12px;
-          font-family: $fontHeading;
-        }
-
-        &.access{
-          text-transform: capitalize;
-        }
-
-        .btn{
-          margin: 0;
-          &.blank{
-            padding-left: 15px;
-            padding-right: 15px;
-          }
-
-        }
-      }
+    &.access{
+      text-transform: capitalize;
     }
-  }
+  } 
 }

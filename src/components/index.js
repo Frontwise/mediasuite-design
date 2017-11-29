@@ -12,6 +12,7 @@ import Homepage from './Homepage/Homepage';
 import Page from './Page/Page';
 import Projects from './Projects/Projects';
 import ProjectTable from './ProjectTable/ProjectTable';
+import SortTable from './SortTable/SortTable';
 import ToolDetails from './ToolDetails/ToolDetails';
 import Tools from './Tools/Tools';
 
@@ -30,6 +31,7 @@ export{
   Page,
   Projects,
   ProjectTable,
+  SortTable,
   ToolDetails,
   Tools,
 }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { SortTable } from '../';
 
 class ProjectTable extends Component {
   constructor(props){
@@ -8,16 +9,11 @@ class ProjectTable extends Component {
 
     this.state={
       projects: [],
-      sortedProjects: [],
       loading: true,
       filter:{
         keywords: '',
         currentUser: false,
-      },
-      sort:{
-        field: null,
-        order: 'asc'
-      }
+      }      
     }
   }
 
@@ -35,40 +31,13 @@ class ProjectTable extends Component {
   }
 
 
-  /**
-   * Sort projects based on sort
-   */
-   sortProjects(projects, sort){
-     let sorted = projects;
-     switch(sort.field){
-      case 'name':
-        sorted.sort((a,b)=>(a.name > b.name));
-      break;
-      case 'bookmarks':
-        sorted.sort((a,b)=>(a.bookmarks.length - b.bookmarks.length));
-      break;
-      case 'owner':
-        sorted.sort((a,b)=>(a.owner.name > b.owner.name));
-      break;
-      case 'access':
-        sorted.sort((a,b)=>(a.getAccess(this.props.user.id) > b.getAccess(this.props.user.id)));
-      break;
-      default:
-        // no sorting,just return
-        return sorted;
-     }
-
-     return sort.order === 'desc' ? sorted.reverse() : sorted;
-
-   }
-
+ 
   /**
    * Set new list of projects to state
    */
   setProjects(projects){
     this.setState({
-      projects,
-      sortedProjects: this.sortProjects(projects, this.state.sort),
+      projects,      
       loading: false,
     });
   }
@@ -136,28 +105,34 @@ class ProjectTable extends Component {
     window.open("data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(project, null, 4)));
   }
 
-  /**
-   * Sort projects
+
+   /**
+   * Sort projects based on sort
    */
-  sort(field){
-    let sort = {
-        field: field,
-        order: this.state.sort.field === field && this.state.sort.order === 'asc' ? 'desc' : 'asc'
-      };
+   sortProjects(projects, sort){
+     let sorted = projects;
+     switch(sort.field){
+      case 'name':
+        sorted.sort((a,b)=>(a.name > b.name));
+      break;
+      case 'bookmarks':
+        sorted.sort((a,b)=>(a.bookmarks.length - b.bookmarks.length));
+      break;
+      case 'owner':
+        sorted.sort((a,b)=>(a.owner.name > b.owner.name));
+      break;
+      case 'access':
+        sorted.sort((a,b)=>(a.getAccess(this.props.user.id) > b.getAccess(this.props.user.id)));
+      break;
+      default:
+        // no sorting,just return
+        return sorted;
+     }
 
-    this.setState({
-      sort,
-      sortedProjects: this.sortProjects(this.state.projects, sort),
-    });
+     return sort.order === 'desc' ? sorted.reverse() : sorted;
 
-  }
+   }
 
-
-
-  getHeader(field, content){
-    let active = this.state.sort.field == field;
-    return (<th className={classNames('sortable', {'active': active, 'desc': active && this.state.sort.order == 'desc' })}onClick={this.sort.bind(this, field)}>{content}</th>);
-  }
 
 
   render() {
@@ -201,8 +176,37 @@ class ProjectTable extends Component {
 
         </div>
 
+        <SortTable
+            items={projects}
+            head={[
+                {field: '', content: <input type="checkbox" />, sortable: false},
+                {field: 'name', content: 'Name', sortable: true},
+                {field: 'bookmarks', content: <i className="bookmark-icon"/>, sortable: true},
+                {field: 'owner', content: 'Owner', sortable: true},
+                {field: 'access', content: 'Access', sortable: true},
+                {field: '', content: '', sortable: false},
+                {field: '', content: '', sortable: false},
+                {field: '', content: '', sortable: false},
+              ]}
+            row={(project)=>(
+                  <tr key={project.id}>
+                    <td><input type="checkbox" /></td>
+                    <td className="primary"><a href={"#projectDetails-" + project.id}>{project.name}</a></td>
+                    <td className="number">{project.getBookmarkCount()}</td>
+                    <td>{project.owner.name} {project.getCollaboratorCount() ? <span className="collaborators">{project.getCollaboratorCount()} Collaborator{project.getCollaboratorCount() !== 1 ? 's' : ''}</span> : ''}</td>
+                    <td className="access">{project.getAccess(currentUserId)}</td>
+                    <td>{project.canDelete(currentUserId) ? <a className="btn blank warning" onClick={this.deleteProject.bind(this,project)}>Delete</a> : ''}</td>
+                    <td>{project.canExport(currentUserId) ? <a className="btn blank" onClick={this.exportProject.bind(this,project)}>Export</a> : ''}</td>
+                    <td>{project.canOpen(currentUserId) ? <a href={"#projectDetails-" + project.id} className="btn">Open</a> : ''}</td>
+                  </tr>
+                )}
+            sort={this.sortProjects.bind(this)}
+            loading={this.state.loading}
 
-        { projects.length ?
+
+           />
+
+        {/* projects.length ?
           <table className={this.state.loading ? 'loading': ''}>
             <thead>
               <tr>
@@ -239,7 +243,7 @@ class ProjectTable extends Component {
             :
             <h3 className="error">No projects found</h3>
 
-        }
+       */}
       </div>
     );
   }
