@@ -119,8 +119,9 @@ class SortTable extends Component {
             <h3 className="error">Loading...</h3>
             :
             <h3 className="error">No results</h3>
-
         }
+        <p>Todo: Pagination</p>
+        <p>Todo: With selected: [ Actions \/ ]</p>
       </div>
     );
   }
