@@ -21,7 +21,7 @@ class ProjectTable extends Component {
   /**
    * Call filter callback
    */
-  update(){
+  loadData(){
 
     this.setState({
       loading: true
@@ -72,15 +72,15 @@ class ProjectTable extends Component {
    * After mounting, retrieve project data
    */
   componentDidMount(){
-    this.update();
+    this.loadData();
   }
   /**
-   * Listen for updates, request new data if filter has been changed
+   * Listen for update, request new data if filter has been changed
    */
   componentDidUpdate(){
     if (this.lastFilter !== this.state.filter){
       this.lastFilter = this.state.filter;
-      this.update();
+      this.loadData();
     }
   }
 
@@ -96,7 +96,7 @@ class ProjectTable extends Component {
         if (status && status.success){
 
           // just retrieve the latest data
-          this.update();
+          this.loadData();
         }
       });
     }
