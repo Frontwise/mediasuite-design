@@ -8,6 +8,7 @@ class SortTable extends Component {
 
     this.state={
       items: props.items,
+      selection: [],
       sort:{
         field: null,
         order: 'asc'
@@ -17,7 +18,8 @@ class SortTable extends Component {
 
 
   /**
-   * Sort projects
+   * Sort projects based on the given field
+   * @oaram {string} field Unique sort field
    */
   sort(field){
     let sort = {
@@ -32,7 +34,14 @@ class SortTable extends Component {
 
   }
 
-
+  /**
+   * Get a header <th> element
+   * @param  {number} index For unique key
+   * @param  {string} field Unique field name for sorting
+   * @param  {Symbol} 
+   * @param  {[type]}
+   * @return {[type]}
+   */
   getHeader(index, field, content, sortable){
     let active = sortable && this.state.sort.field === field;
     let sortFunc = sortable ? {onClick: this.sort.bind(this, field)} : {};
@@ -44,12 +53,44 @@ class SortTable extends Component {
     );
   }
 
+  /**
+   * New props, update the state
+   * @param  {object} nextProps 
+   */
   componentWillReceiveProps(nextProps){
     if (nextProps.items !== this.state.items){
-      this.setState({items: nextProps.sort(nextProps.items, this.state.sort)});
+      this.setState({
+        items: nextProps.sort(nextProps.items, this.state.sort),
+        selection: []
+      });
     }
   }
 
+  /**
+   * Select all items
+   * @param  {SyntheticEvent} e Event
+   */
+  selectAll(e){
+    this.setState({
+      selection: e.target.checked ? this.state.items.slice() : []
+    });
+  }
+
+ /**
+  * Select an item
+  * @param  {object} item Item
+  * @param  {SyntheticEvent} e    Event
+  */
+  selectItem(item, e){
+    this.setState({
+       selection: e.target.checked ? 
+          // add if not in the array yet
+          this.state.selection.includes(item) ? this.state.selection : [...this.state.selection, item]
+          :
+          // remove
+          this.state.selection.filter((selected)=>(selected !== item))
+    });
+  }
 
   render() {
     return (
@@ -59,11 +100,18 @@ class SortTable extends Component {
           <table>
             <thead>
               <tr>
+                <th><input type="checkbox" checked={this.state.selection.length === this.state.items.length} onChange={this.selectAll.bind(this)} /></th>
                 {this.props.head.map((head, index)=>(this.getHeader(index, head.field, head.content, head.sortable)))}
               </tr>
             </thead>
             <tbody className={this.props.loading ? 'loading': ''}>
-              {this.props.items.map((item)=>(this.props.row(item)))}           
+
+              {this.props.items.map((item, index)=>(
+                <tr key={index}>
+                  <td><input type="checkbox" checked={this.state.selection.includes(item)} onChange={this.selectItem.bind(this, item)} /></td>                    
+                  { this.props.row(item).map((td, index)=>(<td key={index} {...td.props}>{td.content}</td>)) }
+                </tr>
+                ))}           
             </tbody>
           </table>
           :

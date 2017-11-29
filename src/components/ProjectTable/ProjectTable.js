@@ -34,6 +34,7 @@ class ProjectTable extends Component {
  
   /**
    * Set new list of projects to state
+   * @param {array} projects List of projects
    */
   setProjects(projects){
     this.setState({
@@ -45,6 +46,7 @@ class ProjectTable extends Component {
 
   /**
    * Keywords filter changes
+   * @param {SyntheticEvent} e Event
    */
   keywordsChange(e){
     this.setState({
@@ -56,6 +58,7 @@ class ProjectTable extends Component {
 
   /**
    * Keywords filter changes
+   * @param {SyntheticEvent} e Event
    */
   currentUserChange(e){
     this.setState({
@@ -84,7 +87,8 @@ class ProjectTable extends Component {
 
 
   /**
-   * Delete project
+   * Delete project if confirmed
+   * @param {object} project Project to delete
    */
   deleteProject(project){
     if (window.confirm('Are you sure you want to delete project ' + project.name)){
@@ -100,6 +104,7 @@ class ProjectTable extends Component {
 
   /**
    * Export project
+   * @param {object} project Project to export
    */
   exportProject(project){
     window.open("data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(project, null, 4)));
@@ -178,8 +183,7 @@ class ProjectTable extends Component {
 
         <SortTable
             items={projects}
-            head={[
-                {field: '', content: <input type="checkbox" />, sortable: false},
+            head={[                
                 {field: 'name', content: 'Name', sortable: true},
                 {field: 'bookmarks', content: <i className="bookmark-icon"/>, sortable: true},
                 {field: 'owner', content: 'Owner', sortable: true},
@@ -189,61 +193,19 @@ class ProjectTable extends Component {
                 {field: '', content: '', sortable: false},
               ]}
             row={(project)=>(
-                  <tr key={project.id}>
-                    <td><input type="checkbox" /></td>
-                    <td className="primary"><a href={"#projectDetails-" + project.id}>{project.name}</a></td>
-                    <td className="number">{project.getBookmarkCount()}</td>
-                    <td>{project.owner.name} {project.getCollaboratorCount() ? <span className="collaborators">{project.getCollaboratorCount()} Collaborator{project.getCollaboratorCount() !== 1 ? 's' : ''}</span> : ''}</td>
-                    <td className="access">{project.getAccess(currentUserId)}</td>
-                    <td>{project.canDelete(currentUserId) ? <a className="btn blank warning" onClick={this.deleteProject.bind(this,project)}>Delete</a> : ''}</td>
-                    <td>{project.canExport(currentUserId) ? <a className="btn blank" onClick={this.exportProject.bind(this,project)}>Export</a> : ''}</td>
-                    <td>{project.canOpen(currentUserId) ? <a href={"#projectDetails-" + project.id} className="btn">Open</a> : ''}</td>
-                  </tr>
+                    [
+                      { props:{className:"primary"}, content: <a href={"#projectDetails-" + project.id}>{project.name}</a> },
+                      { props:{className:"number"}, content: project.getBookmarkCount()},
+                      { content: <span>{project.owner.name} {project.getCollaboratorCount() ? <span className="collaborators">{project.getCollaboratorCount()} Collaborator{project.getCollaboratorCount() !== 1 ? 's' : ''}</span> : ''}</span> },
+                      { props: { className: "access"}, content: project.getAccess(currentUserId) },
+                      { content: project.canDelete(currentUserId) ? <a className="btn blank warning" onClick={this.deleteProject.bind(this,project)}>Delete</a> : ''},
+                      { content: project.canExport(currentUserId) ? <a className="btn blank" onClick={this.exportProject.bind(this,project)}>Export</a> : ''},
+                      { content: project.canOpen(currentUserId) ? <a href={"#projectDetails-" + project.id} className="btn">Open</a> : ''}
+                    ]
                 )}
             sort={this.sortProjects.bind(this)}
             loading={this.state.loading}
-
-
            />
-
-        {/* projects.length ?
-          <table className={this.state.loading ? 'loading': ''}>
-            <thead>
-              <tr>
-                <th><input type="checkbox" /></th>
-                {this.getHeader('name','Name')}
-                {this.getHeader('bookmarks',<i className="bookmark-icon"/>)}
-                {this.getHeader('owner','Owner')}
-                {this.getHeader('access','Access')}
-                <th></th>
-                <th></th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-
-                {projects.map((project)=>(
-                  <tr key={project.id}>
-                    <td><input type="checkbox" /></td>
-                    <td className="primary"><a href={"#projectDetails-" + project.id}>{project.name}</a></td>
-                    <td className="number">{project.getBookmarkCount()}</td>
-                    <td>{project.owner.name} {project.getCollaboratorCount() ? <span className="collaborators">{project.getCollaboratorCount()} Collaborator{project.getCollaboratorCount() !== 1 ? 's' : ''}</span> : ''}</td>
-                    <td className="access">{project.getAccess(currentUserId)}</td>
-                    <td>{project.canDelete(currentUserId) ? <a className="btn blank warning" onClick={this.deleteProject.bind(this,project)}>Delete</a> : ''}</td>
-                    <td>{project.canExport(currentUserId) ? <a className="btn blank" onClick={this.exportProject.bind(this,project)}>Export</a> : ''}</td>
-                    <td>{project.canOpen(currentUserId) ? <a href={"#projectDetails-" + project.id} className="btn">Open</a> : ''}</td>
-                  </tr>
-                ))}
-
-            </tbody>
-          </table>
-          :
-          this.state.loading ?
-            <h3 className="error">Loading...</h3>
-            :
-            <h3 className="error">No projects found</h3>
-
-       */}
       </div>
     );
   }
