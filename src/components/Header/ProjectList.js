@@ -28,7 +28,7 @@ class ProjectList extends Component {
       <div className="projects">
         <input placeholder="Search project" ref={(elem)=>{this.searchInput = elem; }} onChange={()=>{ this.search(this.searchInput.value); }}/>
         <div className="list">
-          {this.state.list.slice(0,6).map((p)=>(<a key={p.id} href={'#project-' + p.id}>{p.title}</a>))}
+          {this.state.list.slice(0,6).map((p)=>(<a key={p.id} href={'#project-' + p.id}>{p.name}</a>))}
         </div>
       </div>
     )
