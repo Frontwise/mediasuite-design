@@ -21,7 +21,7 @@ class LoggedIn extends Component {
 
                 // the callback enables you to do an async fetch to get the data
                 // now we use just the list of example projects
-                callback(projects.filter((p)=>(p.title.toLowerCase().indexOf(keyword) > -1)));
+                callback(projects.filter((p)=>(p.name.toLowerCase().indexOf(keyword) > -1)));
               }
             }
           }
@@ -57,7 +57,7 @@ class LoggedInNoProjects extends Component {
 
                 // the callback enables you to do an async fetch to get the data
                 // now we use just the list of example projects
-                callback(projects.filter((p)=>(p.title.toLowerCase().indexOf(keyword) > -1)));
+                callback(projects.filter((p)=>(p.name.toLowerCase().indexOf(keyword) > -1)));
               }
             }
           }

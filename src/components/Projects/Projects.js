@@ -15,7 +15,6 @@ class Projects extends Component {
                 <a href="#createProject" className="btn primary add">Create User Project</a>
                 <h2>User Projects</h2>
                 <p>Store and share Bookmarks & annotations and Tool Sessions</p>
-
             </div>
 
             <ProjectTable api={ProjectAPI} user={users[0]} />
